@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>在mac上搭建github个人博客 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="1.安装nodejs环境node官网：https://nodejs.org/en/download/，下载最新版本即可。$ node -v查看版本号，是否安装成功。 2.新建仓库 在github上新建以“用户名.github.io”命名的仓库名称。例如：  3.Hexo 安装1$ sudo npm install -g hexo  在桌面新建一个blog文件夹，然后cd 到那个目录下。执行以下命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在mac上搭建github个人博客">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/搭建github博客/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.安装nodejs环境node官网：https://nodejs.org/en/download/，下载最新版本即可。$ node -v查看版本号，是否安装成功。 2.新建仓库 在github上新建以“用户名.github.io”命名的仓库名称。例如：  3.Hexo 安装1$ sudo npm install -g hexo  在桌面新建一个blog文件夹，然后cd 到那个目录下。执行以下命令">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://SuiMingYang.github.io/img/github_blog/345547BC-21A6-4871-A02F-3F53DF973263.png">
+<meta property="og:updated_time" content="2018-08-29T10:44:26.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="在mac上搭建github个人博客">
+<meta name="twitter:description" content="1.安装nodejs环境node官网：https://nodejs.org/en/download/，下载最新版本即可。$ node -v查看版本号，是否安装成功。 2.新建仓库 在github上新建以“用户名.github.io”命名的仓库名称。例如：  3.Hexo 安装1$ sudo npm install -g hexo  在桌面新建一个blog文件夹，然后cd 到那个目录下。执行以下命令">
+<meta name="twitter:image" content="http://SuiMingYang.github.io/img/github_blog/345547BC-21A6-4871-A02F-3F53DF973263.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -146,103 +152,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-搭建github博客" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在mac上搭建github个人博客
+    </h1>
+  
+
+        
+        <a href="/2018/07/04/搭建github博客/" class="archive-article-date">
+  	<time datetime="2018-07-04T09:06:56.700Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装nodejs环境"><a href="#1-安装nodejs环境" class="headerlink" title="1.安装nodejs环境"></a>1.安装nodejs环境</h2><p>node官网：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a>，下载最新版本即可。<br><code>$ node -v</code><br>查看版本号，是否安装成功。</p>
+<h2 id="2-新建仓库"><a href="#2-新建仓库" class="headerlink" title="2.新建仓库"></a>2.新建仓库</h2><blockquote>
+<p>在github上新建以“用户名.github.io”命名的仓库名称。<br>例如：<img src="http://SuiMingYang.github.io/img/github_blog/345547BC-21A6-4871-A02F-3F53DF973263.png" alt="隋明阳的博客]"></p>
+</blockquote>
+<h2 id="3-Hexo-安装"><a href="#3-Hexo-安装" class="headerlink" title="3.Hexo 安装"></a>3.Hexo 安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在桌面新建一个blog文件夹，然后cd 到那个目录下。<br>执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line"></span><br><span class="line">$ npm install</span><br><span class="line"></span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>查看页面，默认端口4000：<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>，本地调试。</p>
+<h2 id="3-更改端口"><a href="#3-更改端口" class="headerlink" title="3.更改端口"></a>3.更改端口</h2><p>如果默认端口4000被占用，切换端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s -p 5000</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-写博客"><a href="#4-写博客" class="headerlink" title="4.写博客"></a>4.写博客</h2><p>github博客使用markdown语法，参考文章：<a href="https://www.cnblogs.com/liugang-vip/p/6337580.html" target="_blank" rel="noopener">https://www.cnblogs.com/liugang-vip/p/6337580.html</a></p>
+<h2 id="5-更改模版"><a href="#5-更改模版" class="headerlink" title="5.更改模版"></a>5.更改模版</h2><p>默认的模版是landscape，这里介绍yilia的下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将根目录的 <code>theme</code> 的值设为 <code>yilia</code> 。</p>
+</blockquote>
+<h2 id="6-更新提交"><a href="#6-更新提交" class="headerlink" title="6.更新提交"></a>6.更新提交</h2><blockquote>
+<p>清除已生成的静态文件 (public)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>重新生成，提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line"></span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<p>参考文章：<br><a href="https://www.cnblogs.com/ldnh/archive/2017/10/11/7651840.html" target="_blank" rel="noopener">https://www.cnblogs.com/ldnh/archive/2017/10/11/7651840.html</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢您的支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/smy/smy_zfb.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/smy/smy_wx.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/29/scrapy学习笔记/" class="archive-article-date">
-  	<time datetime="2018-08-29T11:09:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/29/scrapy学习笔记/">scrapy学习笔记</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/04/搭建github博客/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/搭建github博客/" class="archive-article-date">
-  	<time datetime="2018-07-02T09:06:56.700Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/29/scrapy学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          scrapy学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">scrapy学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/搭建github博客/">在mac上搭建github个人博客</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/hello-world/" class="archive-article-date">
-  	<time datetime="2018-07-02T08:12:59.257Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/hello-world/">scrapy学习笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -265,8 +366,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
