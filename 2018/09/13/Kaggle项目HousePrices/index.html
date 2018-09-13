@@ -16,10 +16,13 @@
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="1.问题描述 Competition DescriptionAsk a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-13T11:02:27.628Z">
+<meta property="og:image" content="http://SuiMingYang.github.io/img/HousePrices/data_description.txt">
+<meta property="og:image" content="https://github.com/SuiMingYang/HousePrices">
+<meta property="og:updated_time" content="2018-09-13T11:33:35.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle项目HousePrices">
 <meta name="twitter:description" content="1.问题描述 Competition DescriptionAsk a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this">
+<meta name="twitter:image" content="http://SuiMingYang.github.io/img/HousePrices/data_description.txt">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -176,10 +179,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><blockquote>
-<h4 id="Competition-Description"><a href="#Competition-Description" class="headerlink" title="Competition Description"></a>Competition Description</h4><p>Ask a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition’s dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence.<br>With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.</p>
+<h4 id="Competition-Description"><a href="#Competition-Description" class="headerlink" title="Competition Description"></a>Competition Description</h4><p>Ask a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition’s dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence.<br><a id="more"></a><br>With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.</p>
 <h4 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h4><p>It is your job to predict the sales price for each house. For each Id in the test set, you must predict the value of the SalePrice variable. </p>
 <h4 id="Metric"><a href="#Metric" class="headerlink" title="Metric"></a>Metric</h4><p>Submissions are evaluated on Root-Mean-Squared-Error (RMSE) between the logarithm of the predicted value and the logarithm of the observed sales price. (Taking logs means that errors in predicting expensive houses and cheap houses will affect the result equally.)</p>
 </blockquote>
+<h3 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2.数据预处理"></a>2.数据预处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">from pandas import Series,DataFrame</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt </span><br><span class="line"></span><br><span class="line">train = pd.read_csv(&apos;train.csv&apos;)</span><br><span class="line">test = pd.read_csv(&apos;test.csv&apos;)</span><br></pre></td></tr></table></figure>
+<p>根据<strong>data_description.txt</strong>文件的变量解释做数据映射，文件较长，是用去重后的变量逐一数字化，文本很长不贴代码了，文件：<img src="http://SuiMingYang.github.io/img/HousePrices/data_description.txt" alt="映射文件"></p>
+<h3 id="3-训练学习器"><a href="#3-训练学习器" class="headerlink" title="3.训练学习器"></a>3.训练学习器</h3><p>题目有要求是用GradientBoostingRegressor，也可以选取多种回归方法对比，在注释中有示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import make_classification</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.model_selection import cross_val_score</span><br><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">from sklearn.tree import DecisionTreeRegressor</span><br><span class="line">from sklearn.metrics import mean_absolute_error,explained_variance_score</span><br><span class="line">from sklearn.metrics import accuracy_score, log_loss</span><br><span class="line">from sklearn import linear_model</span><br><span class="line">from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span><br><span class="line">from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span><br><span class="line">from sklearn.kernel_ridge import KernelRidge</span><br><span class="line">from sklearn import svm</span><br><span class="line">from sklearn.neighbors import KNeighborsRegressor</span><br><span class="line">from sklearn.gaussian_process import GaussianProcessRegressor</span><br><span class="line">from sklearn.neural_network import MLPRegressor</span><br><span class="line">from sklearn.preprocessing import PolynomialFeatures</span><br><span class="line">from sklearn.ensemble import GradientBoostingRegressor</span><br><span class="line"></span><br><span class="line">Regressor = [</span><br><span class="line">    ##linear_model.Ridge(alpha = .5),</span><br><span class="line">    ##linear_model.RidgeCV(alphas=[0.1, 1.0, 10.0]),</span><br><span class="line">    ##linear_model.LinearRegression(),</span><br><span class="line">    ##linear_model.Lasso(alpha = 0.001),</span><br><span class="line">    #linear_model.LogisticRegression(solver=&apos;saga&apos;,multi_class=&apos;ovr&apos;,C=1,penalty=&apos;l1&apos;,fit_intercept=True,max_iter=1,random_state=39,),</span><br><span class="line">    #QuadraticDiscriminantAnalysis(store_covariances=True),</span><br><span class="line">    GradientBoostingRegressor(n_estimators=124,learning_rate=0.1,max_depth=5,min_samples_split=2,min_samples_leaf=5,subsample=0.7, random_state=100, loss=&apos;ls&apos;),</span><br><span class="line">    #GradientBoostingRegressor(loss=&apos;ls&apos;, learning_rate=0.1, n_estimators=100, subsample=1.0, criterion=&apos;friedman_mse&apos;, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_depth=3, min_impurity_decrease=0.0, min_impurity_split=None, init=None, random_state=None, max_features=None, alpha=0.9, verbose=0, max_leaf_nodes=None, warm_start=False, presort=&apos;auto&apos;),</span><br><span class="line">    #LinearDiscriminantAnalysis(solver=&quot;svd&quot;, store_covariance=True),</span><br><span class="line">    #KernelRidge(alpha=1.0),</span><br><span class="line">    #svm.SVR(),</span><br><span class="line">    #linear_model.SGDRegressor(),</span><br><span class="line">    #linear_model.ElasticNet(),#new</span><br><span class="line">    #PolynomialFeatures(degree=2, include_bias=False, interaction_only=False),#new</span><br><span class="line">    #KNeighborsRegressor(n_neighbors=3),</span><br><span class="line">    #GaussianProcessRegressor(kernel=gp_kernel),</span><br><span class="line">    ##DecisionTreeRegressor(),</span><br><span class="line">    ##MLPRegressor(),</span><br><span class="line">    #linear_model.BayesianRidge(alpha_1=11, lambda_1=3,lambda_2=3),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>切分训练测试数据，重点观测explained_variance_score值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(train.drop([&apos;SalePrice&apos;, &apos;Id&apos;], axis=1), train.SalePrice,test_size=0.2, random_state=17)</span><br><span class="line">log_cols = [&quot;Regressor&quot;, &quot;explained_variance_score&quot;, &quot;mean_absolute_error&quot;]</span><br><span class="line">log = pd.DataFrame(columns=log_cols)</span><br><span class="line"></span><br><span class="line">for clf in Regressor:</span><br><span class="line">    print(&apos;****Results****&apos;)</span><br><span class="line">    clf.fit(X_train, y_train)</span><br><span class="line">    name = clf.__class__.__name__</span><br><span class="line">    #print(&apos;****Results****&apos;)</span><br><span class="line">    print(name)</span><br><span class="line">    train_predictions = clf.predict(X_test)</span><br><span class="line">    evs = explained_variance_score(y_test, train_predictions,multioutput=&apos;uniform_average&apos;)</span><br><span class="line">    print(&quot;explained_variance_score: &#123;:.4%&#125;&quot;.format(evs))</span><br><span class="line">    </span><br><span class="line">    train_predictions = clf.predict(X_test)</span><br><span class="line">    mae = mean_absolute_error(y_test, train_predictions, multioutput=&apos;raw_values&apos;)</span><br><span class="line">    print(&quot;mean_absolute_error: &#123;&#125;&quot;.format(mae))</span><br><span class="line">    </span><br><span class="line">    train_predictions = clf.predict(X_test)</span><br><span class="line">    mae = mean_squared_error(y_test, train_predictions, multioutput=&apos;raw_values&apos;)</span><br><span class="line">    print(&quot;mean_squared_error: &#123;&#125;&quot;.format(mae))</span><br><span class="line"></span><br><span class="line">    log_entry = pd.DataFrame([[name, evs*100, mae]], columns=log_cols)</span><br><span class="line">    log = log.append(log_entry)</span><br></pre></td></tr></table></figure></p>
+<p>如果选择多个算法可做可视化对比：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;explained_variance_score&apos;, y=&apos;Regressor&apos;, data=log, color=&quot;b&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;variance %&apos;)</span><br><span class="line">plt.title(&apos;Regressor Accuracy&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;mean_absolute_error&apos;, y=&apos;Regressor&apos;, data=log, color=&quot;g&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Log Loss&apos;)</span><br><span class="line">plt.title(&apos;Regressor mean_absolute_error&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;mean_squared_error&apos;, y=&apos;Regressor&apos;, data=log, color=&quot;r&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Log Loss&apos;)</span><br><span class="line">plt.title(&apos;Regressor mean_squared_error&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-预测数据"><a href="#4-预测数据" class="headerlink" title="4.预测数据"></a>4.预测数据</h3><p>预测test.csv数据，输出submission.csv文档：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Predict Test Set</span><br><span class="line">favorite_clf = GradientBoostingRegressor(n_estimators=124,learning_rate=0.1,max_depth=5,min_samples_split=2,min_samples_leaf=5,subsample=0.7, random_state=100, loss=&apos;ls&apos;)</span><br><span class="line">favorite_clf.fit(X_train, y_train)</span><br><span class="line">test_predictions = favorite_clf.predict(test.drop([&apos;Id&apos;], axis=1))</span><br><span class="line"></span><br><span class="line"># Format DataFrame</span><br><span class="line">submission = pd.DataFrame(test_predictions, columns=[&quot;SalePrice&quot;])</span><br><span class="line">submission.insert(0, &apos;Id&apos;, test.Id)</span><br><span class="line">submission.reset_index()</span><br><span class="line"></span><br><span class="line"># Export Submission</span><br><span class="line">submission.to_csv(&apos;submission.csv&apos;, index = False)</span><br></pre></td></tr></table></figure></p>
+<p>代码链接：<img src="https://github.com/SuiMingYang/HousePrices" alt="https://github.com/SuiMingYang/HousePrices"></p>
 
       
 
@@ -421,18 +431,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">leecode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
@@ -445,19 +443,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
+                <a href="javascript:void(0)" class="js-tag color3">leecode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,15 +463,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,6 +484,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
             
             <div class="clearfix"></div>
