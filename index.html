@@ -351,11 +351,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GitKraKen</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GitKraKen</a>
         		</li>
       		
 		</ul>
@@ -415,7 +415,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">def warn(*args, **kwargs): pass</span><br><span class="line">import warnings</span><br><span class="line">warnings.warn = warn</span><br><span class="line"></span><br><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">from sklearn.cross_validation import StratifiedShuffleSplit</span><br><span class="line">#from sklearn.model_selection import StratifiedShuffleSplit</span><br><span class="line">train = pd.read_csv(&apos;train.csv&apos;)</span><br><span class="line">test = pd.read_csv(&apos;test.csv&apos;)</span><br><span class="line"></span><br><span class="line">def encode(train, test):</span><br><span class="line">    le = LabelEncoder().fit(train.species) </span><br><span class="line">    labels = le.transform(train.species)           # encode species strings</span><br><span class="line">    classes = list(le.classes_)                    # save column names for submission</span><br><span class="line">    test_ids = test.id                             # save test ids for submission</span><br><span class="line">    </span><br><span class="line">    train = train.drop([&apos;species&apos;, &apos;id&apos;], axis=1)  </span><br><span class="line">    test = test.drop([&apos;id&apos;], axis=1)</span><br><span class="line">    </span><br><span class="line">    return train, labels, test, test_ids, classes</span><br><span class="line"></span><br><span class="line">train, labels, test, test_ids, classes = encode(train, test)</span><br><span class="line">train.head(1)</span><br><span class="line"></span><br><span class="line">sss = StratifiedShuffleSplit(labels, 10, test_size=0.2, random_state=23)</span><br><span class="line"></span><br><span class="line">for train_index, test_index in sss:</span><br><span class="line">    X_train, X_test = train.values[train_index], train.values[test_index]</span><br><span class="line">    y_train, y_test = labels[train_index], labels[test_index]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from sklearn.metrics import accuracy_score, log_loss</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">from sklearn.svm import SVC, LinearSVC, NuSVC</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier</span><br><span class="line">from sklearn.naive_bayes import GaussianNB</span><br><span class="line">from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span><br><span class="line">from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span><br><span class="line"></span><br><span class="line">classifiers = [</span><br><span class="line">    KNeighborsClassifier(3),</span><br><span class="line">    SVC(kernel=&quot;rbf&quot;, C=0.025, probability=True),</span><br><span class="line">    NuSVC(probability=True),</span><br><span class="line">    DecisionTreeClassifier(),</span><br><span class="line">    RandomForestClassifier(),</span><br><span class="line">    AdaBoostClassifier(),</span><br><span class="line">    GradientBoostingClassifier(),</span><br><span class="line">    GaussianNB(),</span><br><span class="line">    LinearDiscriminantAnalysis(),</span><br><span class="line">    QuadraticDiscriminantAnalysis()]</span><br><span class="line"></span><br><span class="line"># Logging for Visual Comparison</span><br><span class="line">log_cols=[&quot;Classifier&quot;, &quot;Accuracy&quot;, &quot;Log Loss&quot;]</span><br><span class="line">log = pd.DataFrame(columns=log_cols)</span><br><span class="line"></span><br><span class="line">for clf in classifiers:</span><br><span class="line">    clf.fit(X_train, y_train)</span><br><span class="line">    name = clf.__class__.__name__</span><br><span class="line">    </span><br><span class="line">    print(&quot;=&quot;*30)</span><br><span class="line">    print(name)</span><br><span class="line">    </span><br><span class="line">    print(&apos;****Results****&apos;)</span><br><span class="line">    train_predictions = clf.predict(X_test)</span><br><span class="line">    acc = accuracy_score(y_test, train_predictions)</span><br><span class="line">    print(&quot;Accuracy: &#123;:.4%&#125;&quot;.format(acc))</span><br><span class="line">    </span><br><span class="line">    train_predictions = clf.predict_proba(X_test)</span><br><span class="line">    ll = log_loss(y_test, train_predictions)</span><br><span class="line">    print(&quot;Log Loss: &#123;&#125;&quot;.format(ll))</span><br><span class="line">    </span><br><span class="line">    log_entry = pd.DataFrame([[name, acc*100, ll]], columns=log_cols)</span><br><span class="line">    log = log.append(log_entry)</span><br><span class="line">    </span><br><span class="line">print(&quot;=&quot;*30)</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;Accuracy&apos;, y=&apos;Classifier&apos;, data=log, color=&quot;b&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Accuracy %&apos;)</span><br><span class="line">plt.title(&apos;Classifier Accuracy&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;Log Loss&apos;, y=&apos;Classifier&apos;, data=log, color=&quot;g&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Log Loss&apos;)</span><br><span class="line">plt.title(&apos;Classifier Log Loss&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># Predict Test Set</span><br><span class="line">favorite_clf = LinearDiscriminantAnalysis()</span><br><span class="line">favorite_clf.fit(X_train, y_train)</span><br><span class="line">test_predictions = favorite_clf.predict_proba(test)</span><br><span class="line"></span><br><span class="line"># Format DataFrame</span><br><span class="line">submission = pd.DataFrame(test_predictions, columns=classes)</span><br><span class="line">submission.insert(0, &apos;id&apos;, test_ids)</span><br><span class="line">submission.reset_index()</span><br><span class="line"></span><br><span class="line"># Export Submission</span><br><span class="line">submission.to_csv(&apos;submission.csv&apos;, index = False)</span><br><span class="line">submission.tail()</span><br></pre></td></tr></table></figure>
+        <p>kaggle上的一个经典分类项目<br>
+        
+          <a class="article-more-a" href="/2018/08/24/kaggle项目leaf-classification/#more">more >></a>
+        
       
 
       
@@ -509,11 +512,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">skicit-learn</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">skicit-learn</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		
 		</ul>
@@ -586,11 +589,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">tableau</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">tableau</a>
         		</li>
       		
 		</ul>
@@ -1057,6 +1060,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
@@ -1069,6 +1076,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
               </li>
              
@@ -1077,15 +1092,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+                <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
+                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,34 +1129,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
             
             <div class="clearfix"></div>
