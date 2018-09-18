@@ -8,20 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>nba-stat网站数据挖掘（三） | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="scrapy抓取数据1.爬虫设计关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。 2.代码链接nba_stat爬虫">
+  <meta name="description" content="用scikit-learn做数据挖掘1.目标设定">
 <meta name="keywords" content="机器学习,scikit-learn,数据挖掘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nba-stat网站数据挖掘（三）">
 <meta property="og:url" content="http://yoursite.com/2018/09/18/nba-stat网站数据挖掘（三）/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="scrapy抓取数据1.爬虫设计关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。 2.代码链接nba_stat爬虫">
+<meta property="og:description" content="用scikit-learn做数据挖掘1.目标设定">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv">
-<meta property="og:updated_time" content="2018-09-18T15:17:05.698Z">
+<meta property="og:updated_time" content="2018-09-18T15:27:07.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nba-stat网站数据挖掘（三）">
-<meta name="twitter:description" content="scrapy抓取数据1.爬虫设计关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。 2.代码链接nba_stat爬虫">
-<meta name="twitter:image" content="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv">
+<meta name="twitter:description" content="用scikit-learn做数据挖掘1.目标设定">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -170,15 +168,15 @@
 
         
         <a href="/2018/09/18/nba-stat网站数据挖掘（三）/" class="archive-article-date">
-  	<time datetime="2018-09-18T15:06:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
+  	<time datetime="2018-09-18T15:11:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="scrapy抓取数据"><a href="#scrapy抓取数据" class="headerlink" title="scrapy抓取数据"></a>scrapy抓取数据</h2><h3 id="1-爬虫设计"><a href="#1-爬虫设计" class="headerlink" title="1.爬虫设计"></a>1.爬虫设计</h3><p>关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。<br><img src="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" alt="数据文件"></p>
-<h3 id="2-代码链接"><a href="#2-代码链接" class="headerlink" title="2.代码链接"></a>2.代码链接</h3><p><a href="">nba_stat爬虫</a></p>
+        <h2 id="用scikit-learn做数据挖掘"><a href="#用scikit-learn做数据挖掘" class="headerlink" title="用scikit-learn做数据挖掘"></a>用scikit-learn做数据挖掘</h2><h3 id="1-目标设定"><a href="#1-目标设定" class="headerlink" title="1.目标设定"></a>1.目标设定</h3><a id="more"></a>
+<h3 id="2-数据准备"><a href="#2-数据准备" class="headerlink" title="2.数据准备"></a>2.数据准备</h3><p>爬虫抓取自己需要的数据，<br><a href="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">数据文件</a></p>
 
       
 
@@ -296,18 +294,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/18/nba-stat网站数据挖掘（二）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          nba-stat网站数据挖掘（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/18/nba-stat网站数据挖掘（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">nba-stat网站数据挖掘（一）</div>
+    <a href="/2018/09/18/nba-stat网站数据挖掘（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nba-stat网站数据挖掘（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -473,6 +462,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">tableau</a>
               </li>
              
@@ -481,11 +482,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">scikit-learn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,22 +511,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">scikit-learn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
             
             <div class="clearfix"></div>
