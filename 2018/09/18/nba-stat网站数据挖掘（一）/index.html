@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>nba-stat网站数据挖掘（一） | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="scrapy抓取数据1.网站分析关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。">
+  <meta name="description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
 <meta name="keywords" content="爬虫,scrapy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nba-stat网站数据挖掘（一）">
 <meta property="og:url" content="http://yoursite.com/2018/09/18/nba-stat网站数据挖掘（一）/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。">
+<meta property="og:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-18T15:26:58.636Z">
+<meta property="og:updated_time" content="2018-09-19T02:08:44.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nba-stat网站数据挖掘（一）">
-<meta name="twitter:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。">
+<meta name="twitter:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -175,9 +175,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="scrapy抓取数据"><a href="#scrapy抓取数据" class="headerlink" title="scrapy抓取数据"></a>scrapy抓取数据</h2><h3 id="1-网站分析"><a href="#1-网站分析" class="headerlink" title="1.网站分析"></a>1.网站分析</h3><p>关于scrapy爬虫的介绍在之前的文章有介绍过，本节主要分析爬虫的设计细节和代码结构。<a id="more"></a></p>
-<p>nba-stat网站对爬虫很友好，表格数据结构清晰，<br><a href="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">数据文件</a></p>
-<h3 id="2-爬虫设计"><a href="#2-爬虫设计" class="headerlink" title="2.爬虫设计"></a>2.爬虫设计</h3><p>代码链接：<a href="">nba_stat爬虫</a></p>
+        <h2 id="scrapy抓取数据"><a href="#scrapy抓取数据" class="headerlink" title="scrapy抓取数据"></a>scrapy抓取数据</h2><h3 id="1-网站分析"><a href="#1-网站分析" class="headerlink" title="1.网站分析"></a>1.网站分析</h3><p>关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。<a id="more"></a><br><a href="http://www.stat-nba.com/" target="_blank" rel="noopener">http://www.stat-nba.com/</a>网站对爬虫很友好，表格数据结构清晰，非常容易爬取，而且没有限制频繁访问和下载条数，所以直接写爬虫就好了。</p>
+<p>我抓取的数据是，球员列表(<a href="http://www.stat-nba.com/playerList.php" target="_blank" rel="noopener">http://www.stat-nba.com/playerList.php</a>)里展示的所有球员的详细数据。</p>
+<p>详细数据页面，以詹姆斯为例<a href="http://www.stat-nba.com/player/1862.html" target="_blank" rel="noopener">http://www.stat-nba.com/player/1862.html</a>,有五个纬度的数据表格，分别是<strong>场均数据</strong>,<strong>总计数据</strong>,<strong>单场最高</strong>,<strong>进阶数据</strong>（一）,<strong>进阶数据</strong>（二），注意到这其实是一张表格，列主键可以看作是<strong>赛季</strong>，每个表格包括球员的全部赛季值，所以各表行数相同，可以当作是表格太宽，做了分表处理，实际上我们可以用一个大的对象整合所有表的列做字段。但是在网页dom上还是要对各个表去做抽取，本次主要抽取了第一四五个，<strong>总计数据</strong>和<strong>单场最高</strong>对后面的数据分析影响不大，有需要的可以按照代码结构再拓展。</p>
+<h3 id="2-爬虫设计"><a href="#2-爬虫设计" class="headerlink" title="2.爬虫设计"></a>2.爬虫设计</h3><p>item对象，把三个表的列去重作为要爬取的字段。</p>
+<p>抓取球员列表和详细数据，需要两层循环，第一层：遍历球员列表，获取href属性拼接url，发送请求获取球员详细信息；第二层：详细信息页面，遍历三个表的tr、td，这里注意每一条item数据应该是对应三个表的第一条数据的汇总，再各个td取值。针对上个问题，可以分别做json映射，以要取的列所在表的下标为键，列名为值，分别做遍历即可了。映射的好处是做viewmodel，不用再判断名称，直接取键值就可以，而且字段个数多，提出来放json里，代码更容易维护。</p>
+<p>还有些小细节，根据球员的数据特点大概分两种，一种是数值，比如得分，篮板；一种是百分比，命中率，失误率。所以命名时可以加类似”_rate”后缀作区分，便于理解。</p>
+<p>数据文件：<a href="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">球星数据</a><br>代码链接：<a href="">nba_stat爬虫</a></p>
 
       
 
@@ -428,14 +432,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
@@ -444,19 +440,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">leecode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,23 +460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,6 +480,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
              
@@ -508,15 +504,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
               </li>
             
             <div class="clearfix"></div>
