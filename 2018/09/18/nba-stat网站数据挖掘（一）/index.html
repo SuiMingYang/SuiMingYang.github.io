@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-19T17:05:58.311Z">
+<meta property="og:updated_time" content="2018-09-24T03:43:30.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nba-stat网站数据挖掘（一）">
 <meta name="twitter:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
@@ -187,7 +187,7 @@
 <h3 id="2-爬虫设计"><a href="#2-爬虫设计" class="headerlink" title="2.爬虫设计"></a>2.爬虫设计</h3><p>item对象，把三个表的列去重作为要爬取的字段。</p>
 <p>抓取球员列表和详细数据，需要两层循环，第一层：遍历球员列表，获取href属性拼接url，发送请求获取球员详细信息；第二层：详细信息页面，遍历三个表的tr、td，这里注意每一条item数据应该是对应三个表的第一条数据的汇总，再各个td取值。针对上个问题，可以分别做json映射，以要取的列所在表的下标为键，列名为值，分别做遍历即可了。映射的好处是做viewmodel，不用再判断名称，直接取键值就可以，而且字段个数多，提出来放json里，代码更容易维护。</p>
 <p>还有些小细节，根据球员的数据特点大概分两种，一种是数值，比如得分，篮板；一种是百分比，命中率，失误率。所以命名时可以加类似”_rate”后缀作区分，便于理解。</p>
-<p>数据文件：<a href="http://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">球星数据</a><br>代码链接：<a href="https://github.com/SuiMingYang/stat_nba_scrapy/tree/dev" target="_blank" rel="noopener">nba_stat爬虫</a></p>
+<p>数据文件：<a href="https://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">球星数据</a><br>代码链接：<a href="https://github.com/SuiMingYang/stat_nba_scrapy/tree/dev" target="_blank" rel="noopener">nba_stat爬虫</a></p>
 
       
 
@@ -485,6 +485,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
               </li>
              
@@ -513,14 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
@@ -533,19 +529,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">tableau</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,11 +553,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
             
             <div class="clearfix"></div>
