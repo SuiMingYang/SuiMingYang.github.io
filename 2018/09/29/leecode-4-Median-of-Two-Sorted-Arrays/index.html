@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="找出两个数组的中位数1.题目描述：（1）给定两个已经排好序的数组。（2）复杂度是O(log (m+n))。（3）两个数组不会同时为空。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-29T04:58:29.200Z">
+<meta property="og:image" content="https://SuiMingYang.github.io/img/4median/9BD07E78-3D61-4095-B870-F48DC9963F70.png">
+<meta property="og:updated_time" content="2018-09-30T01:04:23.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leecode-4.Median of Two Sorted Arrays">
 <meta name="twitter:description" content="找出两个数组的中位数1.题目描述：（1）给定两个已经排好序的数组。（2）复杂度是O(log (m+n))。（3）两个数组不会同时为空。">
+<meta name="twitter:image" content="https://SuiMingYang.github.io/img/4median/9BD07E78-3D61-4095-B870-F48DC9963F70.png">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -68,10 +70,6 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -181,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="找出两个数组的中位数"><a href="#找出两个数组的中位数" class="headerlink" title="找出两个数组的中位数"></a>找出两个数组的中位数</h2><h3 id="1-题目描述："><a href="#1-题目描述：" class="headerlink" title="1.题目描述："></a>1.题目描述：</h3><p>（1）给定两个已经排好序的数组。<br>（2）复杂度是O(log (m+n))。<br>（3）两个数组不会同时为空。</p>
+        <h2 id="找出两个数组的中位数"><a href="#找出两个数组的中位数" class="headerlink" title="找出两个数组的中位数"></a>找出两个数组的中位数</h2><h3 id="1-题目描述："><a href="#1-题目描述：" class="headerlink" title="1.题目描述："></a>1.题目描述：</h3><p><img src="https://SuiMingYang.github.io/img/4median/9BD07E78-3D61-4095-B870-F48DC9963F70.png" alt="题目描述"><br>（1）给定两个已经排好序的数组。<br>（2）复杂度是O(log (m+n))。<br>（3）两个数组不会同时为空。</p>
 <a id="more"></a>
 <h3 id="2-算法分析："><a href="#2-算法分析：" class="headerlink" title="2.算法分析："></a>2.算法分析：</h3><p>逐点分析，取中位数的条件是知道数组的长度，即为两个数组长度的和，又要有一个必要条件是数组是有顺序的，所以第一步合并两个给出的数组为一个有序的数组。<br>合并的细节是，不是传统的两层for循环，而是给两个数组两个指针，同时遍历比较，每次都取最小的放入新数组，同时也注意，当指针超过某个数组后，就不再比较，只从另一个读取插入。这样的遍历利用了题目的有序数组条件，也满足复杂度要求。</p>
 <h3 id="3-算法实现："><a href="#3-算法实现：" class="headerlink" title="3.算法实现："></a>3.算法实现：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var findMedianSortedArrays = function(nums1, nums2) &#123;</span><br><span class="line">    var i=0,j=0,carr=[];</span><br><span class="line">    while(i&lt;nums1.length||j&lt;nums2.length)&#123;</span><br><span class="line">        if(nums1[i]&gt;nums2[j]||i&gt;=nums1.length)&#123;</span><br><span class="line">            carr.push(nums2[j]);</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(nums2[j]&gt;nums1[i]||j&gt;=nums2.length)&#123;</span><br><span class="line">            carr.push(nums1[i]);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            carr.push(nums1[i]);carr.push(nums2[j]);</span><br><span class="line">            i++;j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return carr.length%2==0 ? (carr[carr.length/2]+carr[carr.length/2-1])/2 : carr[Math.floor(carr.length/2)];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -426,25 +424,17 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -477,7 +467,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,19 +483,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,6 +496,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,7 +547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
               </li>
             
             <div class="clearfix"></div>
@@ -603,34 +593,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://www.baidu.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>百度</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.zhihu.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>知乎</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.csdn.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CSDN</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.github.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GitHub</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.stackoverflow.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>stackoverflow</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
