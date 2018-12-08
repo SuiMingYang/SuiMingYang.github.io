@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hive sql语法学习笔记 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hive sql语句123456789CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name   [(col_name data_type [COMMENT col_comment], ...)]   [COMMENT table_comment]   [PARTITIONED BY (col_name data_type [COMMENT col_c">
+  <meta name="description" content="hive sql语句hive">
 <meta name="keywords" content="hive,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hive sql语法学习笔记">
 <meta property="og:url" content="http://yoursite.com/2018/11/27/sql语法学习笔记/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="hive sql语句123456789CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name   [(col_name data_type [COMMENT col_comment], ...)]   [COMMENT table_comment]   [PARTITIONED BY (col_name data_type [COMMENT col_c">
+<meta property="og:description" content="hive sql语句hive">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-27T08:22:29.987Z">
+<meta property="og:updated_time" content="2018-12-08T02:42:38.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive sql语法学习笔记">
-<meta name="twitter:description" content="hive sql语句123456789CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name   [(col_name data_type [COMMENT col_comment], ...)]   [COMMENT table_comment]   [PARTITIONED BY (col_name data_type [COMMENT col_c">
+<meta name="twitter:description" content="hive sql语句hive">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -177,7 +177,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="hive-sql语句"><a href="#hive-sql语句" class="headerlink" title="hive sql语句"></a>hive sql语句</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name </span><br><span class="line">  [(col_name data_type [COMMENT col_comment], ...)] </span><br><span class="line">  [COMMENT table_comment] </span><br><span class="line">  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] </span><br><span class="line">  [CLUSTERED BY (col_name, col_name, ...) </span><br><span class="line">  [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS] </span><br><span class="line">  [ROW FORMAT row_format] </span><br><span class="line">  [STORED AS file_format] </span><br><span class="line">  [LOCATION hdfs_path]</span><br></pre></td></tr></table></figure>
+        <h2 id="hive-sql语句"><a href="#hive-sql语句" class="headerlink" title="hive sql语句"></a>hive sql语句</h2><h3 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h3><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name </span><br><span class="line">  [(col_name data_type [COMMENT col_comment], ...)] </span><br><span class="line">  [COMMENT table_comment] </span><br><span class="line">  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)] </span><br><span class="line">  [CLUSTERED BY (col_name, col_name, ...) </span><br><span class="line">  [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS] </span><br><span class="line">  [ROW FORMAT row_format] </span><br><span class="line">  [STORED AS file_format] </span><br><span class="line">  [LOCATION hdfs_path]</span><br></pre></td></tr></table></figure>
 <p>•CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出异常；用户可以用 IF NOT EXIST 选项来忽略这个异常<br>•EXTERNAL 关键字可以让用户创建一个外部表，在建表的同时指定一个指向实际数据的路径（LOCATION）<br>•LIKE 允许用户复制现有的表结构，但是不复制数据<br>•COMMENT可以为表与字段增加描述<br>•ROW FORMAT<br>    DELIMITED [FIELDS TERMINATED BY char] [COLLECTION ITEMS TERMINATED BY char]<br>        [MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]<br>   | SERDE serde_name [WITH SERDEPROPERTIES (property_name=property_value, property_name=property_value, …)]<br>         用户在建表的时候可以自定义 SerDe 或者使用自带的 SerDe。如果没有指定 ROW FORMAT 或者 ROW FORMAT DELIMITED，将会使用自带的 SerDe。在建表的时候，用户还需要为表指定列，用户在指定表的列的同时也会指定自定义的 SerDe，Hive 通过 SerDe 确定表的具体的列的数据。<br>•STORED AS<br>            SEQUENCEFILE<br>            | TEXTFILE<br>            | RCFILE<br>            | INPUTFORMAT input_format_classname OUTPUTFORMAT             output_format_classname<br>       如果文件数据是纯文本，可以使用 STORED AS TEXTFILE。如果数据需要压缩，使用 STORED AS SEQUENCE 。</p>
 <p>显示所有表：<br>hive&gt; SHOW TABLES;</p>
 <p>按正条件（正则表达式）显示表，<br>hive&gt; SHOW TABLES ‘.*s’;</p>
@@ -458,15 +459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">django</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,6 +475,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">双指针</a>
               </li>
              
@@ -486,7 +487,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
+                <a href="javascript:void(0)" class="js-tag color2">django</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,15 +503,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,15 +531,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,14 +552,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,6 +567,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">思维</a>
               </li>
              
@@ -583,6 +592,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">电商</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">社群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,22 +620,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">社群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
             
             <div class="clearfix"></div>
