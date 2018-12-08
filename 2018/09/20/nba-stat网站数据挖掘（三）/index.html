@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>nba-stat网站数据挖掘（三） | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用scikit-learn做数据挖掘1.目标设定">
+  <meta name="description" content="用scikit-learn做数据挖掘1.目标设定分析全明星球员的数据，分析入选标准模型，预测下一年的入选情况。">
 <meta name="keywords" content="机器学习,scikit-learn,数据挖掘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nba-stat网站数据挖掘（三）">
 <meta property="og:url" content="http://yoursite.com/2018/09/20/nba-stat网站数据挖掘（三）/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="用scikit-learn做数据挖掘1.目标设定">
+<meta property="og:description" content="用scikit-learn做数据挖掘1.目标设定分析全明星球员的数据，分析入选标准模型，预测下一年的入选情况。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-08T01:21:46.366Z">
+<meta property="og:updated_time" content="2018-12-08T07:07:00.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nba-stat网站数据挖掘（三）">
-<meta name="twitter:description" content="用scikit-learn做数据挖掘1.目标设定">
+<meta name="twitter:description" content="用scikit-learn做数据挖掘1.目标设定分析全明星球员的数据，分析入选标准模型，预测下一年的入选情况。">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -177,9 +177,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="用scikit-learn做数据挖掘"><a href="#用scikit-learn做数据挖掘" class="headerlink" title="用scikit-learn做数据挖掘"></a>用scikit-learn做数据挖掘</h2><h3 id="1-目标设定"><a href="#1-目标设定" class="headerlink" title="1.目标设定"></a>1.目标设定</h3><a id="more"></a>
-<h3 id="2-数据准备"><a href="#2-数据准备" class="headerlink" title="2.数据准备"></a>2.数据准备</h3><p>爬虫抓取自己需要的数据，<br><a href="https://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">数据文件</a></p>
-
+        <h2 id="用scikit-learn做数据挖掘"><a href="#用scikit-learn做数据挖掘" class="headerlink" title="用scikit-learn做数据挖掘"></a>用scikit-learn做数据挖掘</h2><h3 id="1-目标设定"><a href="#1-目标设定" class="headerlink" title="1.目标设定"></a>1.目标设定</h3><p>分析全明星球员的数据，分析入选标准模型，预测下一年的入选情况。</p>
+<a id="more"></a>
+<h3 id="2-数据准备"><a href="#2-数据准备" class="headerlink" title="2.数据准备"></a>2.数据准备</h3><p>爬虫抓取自己需要的数据：<br><a href="https://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">数据文件</a></p>
+<h3 id="3-数据预处理"><a href="#3-数据预处理" class="headerlink" title="3.数据预处理"></a>3.数据预处理</h3><h3 id="4-数据模型评估"><a href="#4-数据模型评估" class="headerlink" title="4.数据模型评估"></a>4.数据模型评估</h3><h3 id="5-模型预测"><a href="#5-模型预测" class="headerlink" title="5.模型预测"></a>5.模型预测</h3><h3 id="6-结论"><a href="#6-结论" class="headerlink" title="6.结论"></a>6.结论</h3>
       
 
       
@@ -460,15 +461,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,14 +485,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
               </li>
              
@@ -496,27 +493,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +509,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
+                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高性能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,31 +569,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运营</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电商</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">消费者</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,7 +589,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">消费者</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">社群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运营</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +609,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高性能</a>
+                <a href="javascript:void(0)" class="js-tag color3">电商</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
               </li>
             
             <div class="clearfix"></div>
