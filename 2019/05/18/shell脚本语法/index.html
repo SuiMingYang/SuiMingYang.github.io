@@ -8,14 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>shell脚本语法 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="语法echo &amp;quot;Hello World !&amp;quot; #输出脚本">
+<meta name="keywords" content="shell">
+<meta property="og:type" content="article">
 <meta property="og:title" content="shell脚本语法">
 <meta property="og:url" content="http://yoursite.com/2019/05/18/shell脚本语法/index.html">
 <meta property="og:site_name" content="James Sui的博客">
+<meta property="og:description" content="语法echo &amp;quot;Hello World !&amp;quot; #输出脚本">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T03:00:32.598Z">
+<meta property="og:updated_time" content="2019-05-18T03:16:17.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell脚本语法">
+<meta name="twitter:description" content="语法echo &amp;quot;Hello World !&amp;quot; #输出脚本">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -168,7 +172,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>echo &quot;Hello World !&quot;</code> #输出脚本<br><a id="more"></a><br><code>chmod +x ./test.sh</code>  #使脚本具有执行权限<br><code>./test.sh</code>  #执行脚本</p>
+<hr>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：</p>
+<ol>
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
+<li>中间不能有空格，可以使用下划线（_）。</li>
+<li>不能使用标点符号。</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）。</li>
+</ol>
+<h5 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h5><p><code>variable=&#39;123&#39;</code><br><code>echo $variable</code></p>
+<pre><code>-&gt;123
+</code></pre><h5 id="字符串内传参"><a href="#字符串内传参" class="headerlink" title="字符串内传参"></a>字符串内传参</h5><p><code>student=&#39;zhangsan&#39;</code><br><code>echo &quot;hello,i am ${student}.&quot;</code></p>
+<pre><code>-&gt;hello,i am zhangsan.
+</code></pre>
       
 
       
@@ -202,6 +219,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -431,6 +459,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
               </li>
              
@@ -439,19 +471,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,6 +487,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">tableau</a>
               </li>
              
@@ -475,15 +507,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
