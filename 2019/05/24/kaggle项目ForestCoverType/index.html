@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="一、问题描述Random forests? Cover trees? Not so fast, computer nerds. We’re talking about the real thing.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-24T09:28:45.036Z">
+<meta property="og:updated_time" content="2019-05-24T09:55:15.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kaggle项目ForestCoverType">
 <meta name="twitter:description" content="一、问题描述Random forests? Cover trees? Not so fast, computer nerds. We’re talking about the real thing.">
@@ -172,7 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>Random forests? Cover trees? Not so fast, computer nerds. We’re talking about the real thing.<br><a id="more"></a><br>In this competition you are asked to predict the forest cover type (the predominant kind of tree cover) from cartographic variables. The actual forest cover type for a given 30 x 30 meter cell was determined from US Forest Service (USFS) Region 2 Resource Information System data. Independent variables were then derived from data obtained from the US Geological Survey and USFS. The data is in raw form and contains binary columns of data for qualitative independent variables such as wilderness areas and soil type.<br>This study area includes four wilderness areas located in the Roosevelt National Forest of northern Colorado. These areas represent forests with minimal human-caused disturbances, so that existing forest cover types are more a result of ecological processes rather than forest management practices.<br>This competition originally ran in 2015. We are relaunching it as a kernels-only version here.<br>Acknowledgements<br>Kaggle is hosting this competition for the machine learning community to use for fun and practice. This dataset was provided by Jock A. Blackard and Colorado State University. We also thank the UCI machine learning repository for hosting the dataset. If you use the problem in publication, please cite:<br>Bache, K. &amp; Lichman, M. (2013). UCI Machine Learning Repository. Irvine, CA: University of California, School of Information and Computer Science</p>
+        <h3 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h3><p>Random forests? Cover trees? Not so fast, computer nerds. We’re talking about the real thing.<br><a id="more"></a><br>In this competition you are asked to predict the forest cover type (the predominant kind of tree cover) from cartographic variables. The actual forest cover type for a given 30 x 30 meter cell was determined from US Forest Service (USFS) Region 2 Resource Information System data. Independent variables were then derived from data obtained from the US Geological Survey and USFS. The data is in raw form and contains binary columns of data for qualitative independent variables such as wilderness areas and soil type.<br>This study area includes four wilderness areas located in the Roosevelt National Forest of northern Colorado. These areas represent forests with minimal human-caused disturbances, so that existing forest cover types are more a result of ecological processes rather than forest management practices.<br>This competition originally ran in 2015. We are relaunching it as a kernels-only version here.<br>Acknowledgements<br>Kaggle is hosting this competition for the machine learning community to use for fun and practice. This dataset was provided by Jock A. Blackard and Colorado State University. We also thank the UCI machine learning repository for hosting the dataset. If you use the problem in publication, please cite:<br>Bache, K. &amp; Lichman, M. (2013). UCI Machine Learning Repository. Irvine, CA: University of California, School of Information and Computer Science</p>
 <h3 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h3><h3 id="三、数据预处理"><a href="#三、数据预处理" class="headerlink" title="三、数据预处理"></a>三、数据预处理</h3><h4 id="去除空值"><a href="#去除空值" class="headerlink" title="去除空值"></a>去除空值</h4><h4 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h4><h3 id="四、算法选择"><a href="#四、算法选择" class="headerlink" title="四、算法选择"></a>四、算法选择</h3><h3 id="五、参数调优"><a href="#五、参数调优" class="headerlink" title="五、参数调优"></a>五、参数调优</h3><h3 id="六、上传结果"><a href="#六、上传结果" class="headerlink" title="六、上传结果"></a>六、上传结果</h3>
       
 
@@ -471,6 +471,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">leecode</a>
               </li>
              
@@ -483,11 +495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,7 +507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,22 +528,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">动态规划建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,7 +547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,15 +555,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">skicit-learn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,10 +575,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">社群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">消费者</a>
               </li>
              
@@ -583,7 +583,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">跳跃游戏</a>
+                <a href="javascript:void(0)" class="js-tag color3">社群</a>
               </li>
             
             <div class="clearfix"></div>
