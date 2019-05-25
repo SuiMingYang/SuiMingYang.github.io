@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="一、项目目标从商品标题(productTitle)中分类出商品品类(secondtype)。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-25T06:53:20.833Z">
+<meta property="og:updated_time" content="2019-05-25T07:02:28.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="商品标题文本分类">
 <meta name="twitter:description" content="一、项目目标从商品标题(productTitle)中分类出商品品类(secondtype)。">
@@ -176,7 +176,7 @@
 <hr>
 <h3 id="二、环境配置"><a href="#二、环境配置" class="headerlink" title="二、环境配置"></a>二、环境配置</h3><p>脚本：python3.6,anaconda3<br>安装包：jieba分词，scikit-learn</p>
 <hr>
-<h3 id="三、数据准备"><a href="#三、数据准备" class="headerlink" title="三、数据准备"></a>三、数据准备</h3><p>数据是用爬虫抓的某网站的商品标题。</p>
+<h3 id="三、数据准备"><a href="#三、数据准备" class="headerlink" title="三、数据准备"></a>三、数据准备</h3><p>数据是用爬虫抓的某网站的商品标题。<br>分类标签自定义为：<br><code>[&#39;上衣&#39;,&#39;其它&#39;,&#39;包包&#39;,&#39;外套&#39;,&#39;套装&#39;,&#39;家纺&#39;,&#39;日常&#39;,&#39;日用&#39;,&#39;裙子&#39;,&#39;裤子&#39;,&#39;连衣裙&#39;,&#39;配饰&#39;,&#39;链表&#39;,&#39;鞋&#39;]</code><br>对商品标题人工标记分类做训练数据。</p>
 <hr>
 <h3 id="四、数据处理"><a href="#四、数据处理" class="headerlink" title="四、数据处理"></a>四、数据处理</h3><p>分词，去除停用词，转成词向量<br><figure class="highlight plain"><figcaption><span>jieba</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">sentences=[]</span><br><span class="line">df = pd.read_csv(&apos;./data/product.csv&apos;,encoding=&apos;UTF-8&apos;)</span><br><span class="line">for i,item in enumerate(df[&apos;productTitle&apos;]):</span><br><span class="line">    segs=jieba.lcut(item)</span><br><span class="line">    sentences.append((&quot; &quot;.join(segs),df[&apos;secondtype&apos;][i]))</span><br></pre></td></tr></table></figure></p>
 <hr>
@@ -499,27 +499,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">leecode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">leecode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,7 +523,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+                <a href="javascript:void(0)" class="js-tag color4">接雨水</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,7 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">不同路径</a>
+                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,15 +575,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,18 +596,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,10 +611,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nlp</a>
               </li>
              
@@ -623,11 +619,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">消费者</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+                <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,6 +636,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">社群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">消费者</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
               </li>
             
             <div class="clearfix"></div>
