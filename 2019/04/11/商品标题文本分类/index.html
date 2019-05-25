@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>shell脚本语法 | James Sui的博客</title>
+  <title>商品标题文本分类 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="语法echo &amp;quot;Hello World !&amp;quot; #输出脚本">
-<meta name="keywords" content="shell">
+  <meta name="description" content="一、数据准备问题场景：在电商行业，想统计一类商品的销量如何，需要对商品做分类加标签，以完成后续的数据统计。">
+<meta name="keywords" content="scikit-learn,nlp,jieba">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell脚本语法">
-<meta property="og:url" content="http://yoursite.com/2019/01/18/shell脚本语法/index.html">
+<meta property="og:title" content="商品标题文本分类">
+<meta property="og:url" content="http://yoursite.com/2019/04/11/商品标题文本分类/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="语法echo &amp;quot;Hello World !&amp;quot; #输出脚本">
+<meta property="og:description" content="一、数据准备问题场景：在电商行业，想统计一类商品的销量如何，需要对商品做分类加标签，以完成后续的数据统计。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T06:47:39.723Z">
+<meta property="og:updated_time" content="2019-05-25T07:11:24.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell脚本语法">
-<meta name="twitter:description" content="语法echo &amp;quot;Hello World !&amp;quot; #输出脚本">
+<meta name="twitter:title" content="商品标题文本分类">
+<meta name="twitter:description" content="一、数据准备问题场景：在电商行业，想统计一类商品的销量如何，需要对商品做分类加标签，以完成后续的数据统计。">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -151,41 +151,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-shell脚本语法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-商品标题文本分类" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      shell脚本语法
+      商品标题文本分类
     </h1>
   
 
 
         
-        <a href="/2019/01/18/shell脚本语法/" class="archive-article-date">
-  	<time datetime="2019-01-18T03:00:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-18</time>
+        <a href="/2019/04/11/商品标题文本分类/" class="archive-article-date">
+  	<time datetime="2019-04-11T12:48:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>echo &quot;Hello World !&quot;</code> #输出脚本<br><a id="more"></a><br><code>chmod +x ./test.sh</code>  #使脚本具有执行权限<br><code>./test.sh</code>  #执行脚本</p>
+        <h3 id="一、数据准备"><a href="#一、数据准备" class="headerlink" title="一、数据准备"></a>一、数据准备</h3><p>问题场景：在电商行业，想统计一类商品的销量如何，需要对商品做分类加标签，以完成后续的数据统计。<br><a id="more"></a><br>从商品标题(productTitle)中分类出商品品类(secondtype)。<br>分类标签观察数据后，定义为：<br><code>[&#39;上衣&#39;,&#39;其它&#39;,&#39;包包&#39;,&#39;外套&#39;,&#39;套装&#39;,&#39;家纺&#39;,&#39;日常&#39;,&#39;日用&#39;,&#39;裙子&#39;,&#39;裤子&#39;,&#39;连衣裙&#39;,&#39;配饰&#39;,&#39;链表&#39;,&#39;鞋&#39;]</code></p>
+<p>数据是用爬虫抓的某网站的商品标题，对商品标题人工标记分类做训练数据。</p>
 <hr>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：</p>
-<ol>
-<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
-<li>中间不能有空格，可以使用下划线（_）。</li>
-<li>不能使用标点符号。</li>
-<li>不能使用bash里的关键字（可用help命令查看保留关键字）。</li>
-</ol>
-<h5 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h5><p><code>variable=&#39;123&#39;</code><br><code>echo $variable</code></p>
-<pre><code>-&gt;123
-</code></pre><h5 id="字符串内传参"><a href="#字符串内传参" class="headerlink" title="字符串内传参"></a>字符串内传参</h5><p><code>student=&#39;zhangsan&#39;</code><br><code>echo &quot;hello,i am ${student}.&quot;</code></p>
-<pre><code>-&gt;hello,i am zhangsan.
-</code></pre>
+<h3 id="二、环境配置"><a href="#二、环境配置" class="headerlink" title="二、环境配置"></a>二、环境配置</h3><p>脚本：python3.6,anaconda3<br>安装包：jieba分词，scikit-learn</p>
+<hr>
+<h3 id="三、数据处理"><a href="#三、数据处理" class="headerlink" title="三、数据处理"></a>三、数据处理</h3><p>分词，去除停用词，转成词向量<br><figure class="highlight plain"><figcaption><span>jieba</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">sentences=[]</span><br><span class="line">df = pd.read_csv(&apos;./data/product.csv&apos;,encoding=&apos;UTF-8&apos;)</span><br><span class="line">for i,item in enumerate(df[&apos;productTitle&apos;]):</span><br><span class="line">    segs=jieba.lcut(item)</span><br><span class="line">    sentences.append((&quot; &quot;.join(segs),df[&apos;secondtype&apos;][i]))</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="四、模型训练"><a href="#四、模型训练" class="headerlink" title="四、模型训练"></a>四、模型训练</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">random.shuffle(sentences)</span><br><span class="line"></span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">x,y = zip(*sentences)</span><br><span class="line">x_train,x_test,y_train,y_test=train_test_split(x,y,random_state=1234)</span><br><span class="line"></span><br><span class="line">from sklearn.feature_extraction.text import CountVectorizer</span><br><span class="line"></span><br><span class="line">vec = CountVectorizer(</span><br><span class="line">    analyzer=&apos;word&apos;,</span><br><span class="line">    ngram_range=(1,4),</span><br><span class="line">    max_features=22000</span><br><span class="line">)</span><br><span class="line">vec.fit(x_train)</span><br><span class="line"></span><br><span class="line">from sklearn.model_selection import StratifiedKFold</span><br><span class="line">from sklearn.metrics import accuracy_score,precision_score</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">#使用svm分析</span><br><span class="line">from sklearn.svm import SVC</span><br><span class="line">svm = SVC(kernel=&apos;linear&apos;)#快</span><br><span class="line">#SVC()#默认rbf核，慢</span><br><span class="line">svm.fit(vec.transform(x_train),y_train)</span><br><span class="line">print(svm.score(vec.transform(x_test),y_test))</span><br><span class="line"></span><br><span class="line">#写入字典或者离线数据文件</span><br><span class="line">from sklearn.externals import joblib</span><br><span class="line">import pickle</span><br><span class="line">#保存模型</span><br><span class="line">filename = &apos;extract_secondtype.sav&apos;</span><br><span class="line">joblib.dump(svm, filename)</span><br></pre></td></tr></table></figure>
+<p>准确率：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-&gt;</span><br><span class="line">88.95%</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="五、模型检验"><a href="#五、模型检验" class="headerlink" title="五、模型检验"></a>五、模型检验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># load the model from disk</span><br><span class="line">svm = joblib.load(filename)</span><br><span class="line">result = svm.score(vec.transform(x_test),y_test)</span><br><span class="line">#print(result)</span><br><span class="line"></span><br><span class="line">print(svm.score(vec.transform(x_test),y_test))</span><br><span class="line">print(svm.predict(vec.transform(jieba.lcut(u&apos;2019新款黑色职业短款半身裙&apos;))))</span><br><span class="line">print(svm.predict(vec.transform(jieba.lcut(u&apos;女神范套装女春装2019新款时尚休闲慵懒气质御姐洋气阔腿裤两件套&apos;))))</span><br><span class="line">print(svm.predict(vec.transform(jieba.lcut(u&apos;【睡眠文胸】新款无钢圈薄款收副乳全罩杯加厚聚拢大码内衣调整型胸罩运动文胸DQM-4 h405&apos;))))</span><br><span class="line">print(svm.predict(vec.transform(jieba.lcut(u&apos;新款无钢圈薄款收副乳全罩杯加厚聚拢大码内衣调整型胸罩运动文胸&apos;))))</span><br><span class="line">print(svm.predict(vec.transform(jieba.lcut(u&apos;新款无钢圈薄款收副乳全罩杯加厚聚拢大码内衣胸罩&apos;))))</span><br></pre></td></tr></table></figure>
+<p>结果输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-&gt;</span><br><span class="line">[&apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;裙子&apos;]</span><br><span class="line"></span><br><span class="line">[&apos;nan&apos; &apos;nan&apos; &apos;套装&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;裤子&apos; &apos;套装&apos;]</span><br><span class="line"></span><br><span class="line">[&apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;日用&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos;]</span><br><span class="line"></span><br><span class="line">[&apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;日用&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos;]</span><br><span class="line"></span><br><span class="line">[&apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;nan&apos; &apos;日用&apos;</span><br><span class="line"> &apos;nan&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>结果中可以看到，每个标题被分词，转换成词向量，并建立单个词和类型的对应权重，返回的结果数组中出现最多的词即为该标题的类型。</p>
+<hr>
+<p>完整代码地址：<a href="https://github.com/SuiMingYang/ProductTypeClassify" target="_blank" rel="noopener">https://github.com/SuiMingYang/ProductTypeClassify</a></p>
+
       
 
       
@@ -225,7 +227,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">scikit-learn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">nlp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jieba</a>
         		</li>
       		
 		</ul>
@@ -287,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/01/18/shell脚本语法/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/11/商品标题文本分类/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,18 +311,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/02/24/kaggle项目ForestCoverType/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/22/pytorch框架使用/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          kaggle项目ForestCoverType
+          pytorch框架使用
         
       </div>
     </a>
   
   
-    <a href="/2018/12/25/增长黑客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">增长黑客</div>
+    <a href="/2019/03/27/推荐算法应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">推荐算法应用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -343,8 +353,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2019/01/18/shell脚本语法/", 
-    sourceId: "shell脚本语法",
+    url: "http://yoursite.com/2019/04/11/商品标题文本分类/", 
+    sourceId: "商品标题文本分类",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -381,7 +391,7 @@
 <script src="//www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/01/18/shell脚本语法/",
+  id: "http://yoursite.com/2019/04/11/商品标题文本分类/",
   owner: 'suimingyang',
   repo: 'suimingyang.github.io',
   oauth: {
