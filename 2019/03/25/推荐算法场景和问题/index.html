@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>推荐算法理论 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="冷启动问题：用户冷启动：如何给新用户做个性化的推荐物品冷启动：如何将新物品推荐给可能感兴趣的用户系统冷启动：如何在新开发的网站上（无历史用户无历史物品）设计个性化推荐系统解决方案汇总：提供非个性化的推荐：首先推荐热门排行榜，收集到一定的信息之后再切换为个性化推荐粗粒度个性化：根据用户注册时提供的年龄性别等社交账号：授权社交网路账号，导入好友信息，给用户推荐好友喜欢的物品登录反馈:用户在登录的时候">
+  <meta name="description" content="一、推荐理论基本概念推荐的要素：人，物品，关系">
 <meta name="keywords" content="推荐算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="推荐算法理论">
 <meta property="og:url" content="http://yoursite.com/2019/03/25/推荐算法场景和问题/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="冷启动问题：用户冷启动：如何给新用户做个性化的推荐物品冷启动：如何将新物品推荐给可能感兴趣的用户系统冷启动：如何在新开发的网站上（无历史用户无历史物品）设计个性化推荐系统解决方案汇总：提供非个性化的推荐：首先推荐热门排行榜，收集到一定的信息之后再切换为个性化推荐粗粒度个性化：根据用户注册时提供的年龄性别等社交账号：授权社交网路账号，导入好友信息，给用户推荐好友喜欢的物品登录反馈:用户在登录的时候">
+<meta property="og:description" content="一、推荐理论基本概念推荐的要素：人，物品，关系">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-25T03:55:57.202Z">
+<meta property="og:updated_time" content="2019-05-27T08:42:56.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="推荐算法理论">
-<meta name="twitter:description" content="冷启动问题：用户冷启动：如何给新用户做个性化的推荐物品冷启动：如何将新物品推荐给可能感兴趣的用户系统冷启动：如何在新开发的网站上（无历史用户无历史物品）设计个性化推荐系统解决方案汇总：提供非个性化的推荐：首先推荐热门排行榜，收集到一定的信息之后再切换为个性化推荐粗粒度个性化：根据用户注册时提供的年龄性别等社交账号：授权社交网路账号，导入好友信息，给用户推荐好友喜欢的物品登录反馈:用户在登录的时候">
+<meta name="twitter:description" content="一、推荐理论基本概念推荐的要素：人，物品，关系">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -172,9 +172,48 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>冷启动问题：<br>用户冷启动：如何给新用户做个性化的推荐<br>物品冷启动：如何将新物品推荐给可能感兴趣的用户<br>系统冷启动：如何在新开发的网站上（无历史用户无历史物品）设计个性化推荐系统<br>解决方案汇总：<br>提供非个性化的推荐：首先推荐热门排行榜，收集到一定的信息之后再切换为个性化推荐<br>粗粒度个性化：根据用户注册时提供的年龄性别等<br>社交账号：授权社交网路账号，导入好友信息，给用户推荐好友喜欢的物品<br>登录反馈:用户在登录的时候对一些物品进行反馈，以此收集兴趣<br>基于内容：新加入的物品基于内容推荐给喜欢过和他们相似的物品的用户<br>专家知识：进入专家知识，通过一定高校方式迅速建立物品的相关度表</p>
-<p>参考资料：</p>
+        <h2 id="一、推荐理论基本概念"><a href="#一、推荐理论基本概念" class="headerlink" title="一、推荐理论基本概念"></a>一、推荐理论基本概念</h2><p>推荐的要素：<b>人，物品，关系</b><br><a id="more"></a><br>推荐的意义：<b>本质是将实物和用户联系起来。</b></p>
+<h2 id="二、推荐的应用场景"><a href="#二、推荐的应用场景" class="headerlink" title="二、推荐的应用场景"></a>二、推荐的应用场景</h2><p>有目的<br>无目的<br>主动搜索<br>被动过滤</p>
+<h2 id="三、推荐方式"><a href="#三、推荐方式" class="headerlink" title="三、推荐方式"></a>三、推荐方式</h2><p>向朋友咨询：社会化推荐<br>喜欢的导演和类型的推荐：基于内容的推荐<br>参考排行榜：协同过滤</p>
+<p>应用领域：</p>
+<ol>
+<li>基于人的维度：审美（电商，社交），内容（电影，书籍，音乐），爱好（体育周边，娱乐周边），广告，位置。</li>
+<li>基于物品的维度：行业，用途，特性。</li>
+</ol>
+<p>行业不同，实践流程和反馈机制的设计有很大区别。</p>
+<h2 id="四、推荐的流程和实验"><a href="#四、推荐的流程和实验" class="headerlink" title="四、推荐的流程和实验"></a>四、推荐的流程和实验</h2><ol>
+<li>预启动<br>设定目标，AB测试组；获取少量用户信息，主观询问统计，提取特征。</li>
+<li>冷启动<br>没有线上数据，可以推荐热点，离线计算；基于社交推荐。</li>
+<li>数据分析<br>实时计算，得到[用户-物品]日志数据，客观行为分析，得到推荐关系。</li>
+<li>实验反馈<br>评价推荐关系的优劣，结论迭代下一轮实验。</li>
+</ol>
+<h2 id="四、问题和局限"><a href="#四、问题和局限" class="headerlink" title="四、问题和局限"></a>四、问题和局限</h2><ol>
+<li><b>获取用户的偏好和需求模糊</b><br>（1）首先，现在的自然语言理解技术很难理解用户用来述兴趣的自然语言;<br>（2）其次，用户的兴趣是不断变化的，但用户不会不停地更新兴趣描述;<br>（3）最后，很多时候用户并不知道自己喜欢什么，或者很难用语言描述自己喜欢什么。</li>
+</ol>
+<ol start="2">
+<li><p><b>马太效应</b><br>（1）覆盖率：推荐系统的初衷是希望消除马太效应，使得各种物品都能被展示给对它们感兴趣的某一类人群。<br>（2）多样性：推荐种类随着推荐和反馈，趋于收敛，即用户喜欢悬疑电影，不断的推荐悬疑类，导致收到用户偏好的反馈和悬疑的相似度越来越趋于1，应该推荐多类型的。<br>（3）解决方式：两种方式结合，用itemCF推荐深度收敛，用userCF推荐种类，发散维度。</p>
+</li>
+<li><p><b>相关性≠因果性</b><br>（1）推荐螺丝钉和螺母的规则是正确的，但是几乎没有意义，因为很少会单独买。<br>（2）排除本身销量就大的，相关性是有主次之分的，弱者去关联强者。例如买了啤酒的很多人都买了香烟，但是香烟本身就是低价高频的刚需，会发现很多用户不管买不买啤酒，都会买烟，所以推荐无效果。<br>（3）买完电脑的，还是推荐电脑没有意义，高额短频消费特征。<br>（4）喜欢吃荔枝的大部分都喜欢吃桂圆，或者买了面包的大部分会一起购买牛奶，这种才是我们需要的挖掘。</p>
+</li>
+<li><p><b>冷启动问题</b><br>（1）场景：用户冷启动，物品冷启动，系统冷启动。<br>（2）解决方法：用非个性化的推荐-&gt;热点推荐，代表性个性鲜明物品，推荐多样，积累数据，再做个性化推荐。</p>
+</li>
+<li><b>推荐结果的反馈层级</b><br>以电商行业为例：应该观察下单率-&gt;有效下单率（无退货换货），其中有效成交要再看评价-&gt;评价中再看是问题类型（是否是质量问题），如果是非质量问题中的偏好选择问题才是推荐算法的锅。</li>
+</ol>
+<h2 id="五、评价指标的选定和评估"><a href="#五、评价指标的选定和评估" class="headerlink" title="五、评价指标的选定和评估"></a>五、评价指标的选定和评估</h2><p>(暂时参考一个问题)<br>问题：该问卷的调查问题是请问下面哪句话最能描述你看到推荐结果后的感受?<br>1.推荐的论文都是我非常想看的。<br>2.推荐的论文很多我都看过了，确实是符合我兴趣的不错论文。<br>3.推荐的论文和我的研究兴趣是相关的，但我并不喜欢。<br>4.推荐的论文我很喜欢，但是和我的研究不相关。<br>5.不知道为什么会推荐这些论文，它们和我的兴趣丝毫没有关系。</p>
+<p>分析和调整策略：<br>1-&gt;过拟合：推荐论文过于完美，反而不利于推荐算法发散，但不是最差的结果，可以添加部分userCF协同推荐。<br>2-&gt;最好。<br>3-&gt;用户的行为反馈占的权重大了，虽然偏好不稳定，单行为不会说谎，用户不喜欢，应该建立联系，找出短期内用户偏好。<br>4-&gt;和3是镜像，用户的偏好占的权重大了。<br>5-&gt;欠拟合了。</p>
+<h2 id="七、影响推荐的上下文"><a href="#七、影响推荐的上下文" class="headerlink" title="七、影响推荐的上下文"></a>七、影响推荐的上下文</h2><p>除了用户的偏好和用户的行为分析，还存在除此之外影响用户决策的信息：<br>比如时间，偏好不稳定，随时间远近变化。<br>物品有季节性和热点性。<br>宏观政策的影响。</p>
+<!--
+相似度：用户相似度和最近行为
+
+获取初始化数据：
+用户注册数据：年龄，职业，身高，体重，家庭成员。
+
+信任：好友推荐增加信任度，社群营销，（微信读书）
+
+求职岗位推荐，（Boss直聘）
+-->
+<hr>
+<p>参考资料：<br><a href="http://suimingyang.github.io/img/commendresources/长尾理论.pdf" target="_blank" rel="noopener">长尾理论.pdf</a><br><a href="http://suimingyang.github.io/img/commendresources/推荐系统实践.pdf" target="_blank" rel="noopener">推荐系统实践.pdf</a><br><a href="https://www.bilibili.com/video/av23933161/?p=1" target="_blank" rel="noopener">清华数据挖掘导论-入门视频</a></p>
 
       
 
@@ -482,11 +521,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,15 +537,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,15 +557,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">tableau</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,6 +581,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
              
@@ -550,23 +593,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运营</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +605,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">surprise</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运营</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,23 +637,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">surprise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">社群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">消费者</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">社群</a>
               </li>
             
             <div class="clearfix"></div>
