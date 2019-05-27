@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>nba-stat网站数据挖掘（一） | James Sui的博客</title>
+  <title>推荐算法理论 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
-<meta name="keywords" content="爬虫,scrapy">
+  <meta name="description" content="一、推荐理论基本概念推荐的要素：人，物品，关系">
+<meta name="keywords" content="推荐算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nba-stat网站数据挖掘（一）">
-<meta property="og:url" content="http://yoursite.com/2018/09/18/nba-stat网站数据挖掘（一）/index.html">
+<meta property="og:title" content="推荐算法理论">
+<meta property="og:url" content="http://yoursite.com/2019/03/25/推荐算法理论/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
+<meta property="og:description" content="一、推荐理论基本概念推荐的要素：人，物品，关系">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T10:26:15.861Z">
+<meta property="og:updated_time" content="2019-05-27T08:52:36.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nba-stat网站数据挖掘（一）">
-<meta name="twitter:description" content="scrapy抓取数据1.网站分析关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。">
+<meta name="twitter:title" content="推荐算法理论">
+<meta name="twitter:description" content="一、推荐理论基本概念推荐的要素：人，物品，关系">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -151,34 +151,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-nba-stat网站数据挖掘（一）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-推荐算法理论" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      nba-stat网站数据挖掘（一）
+      推荐算法理论
     </h1>
   
 
 
         
-        <a href="/2018/09/18/nba-stat网站数据挖掘（一）/" class="archive-article-date">
-  	<time datetime="2018-09-18T15:02:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
+        <a href="/2019/03/25/推荐算法理论/" class="archive-article-date">
+  	<time datetime="2019-03-25T03:26:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="scrapy抓取数据"><a href="#scrapy抓取数据" class="headerlink" title="scrapy抓取数据"></a>scrapy抓取数据</h2><h3 id="1-网站分析"><a href="#1-网站分析" class="headerlink" title="1.网站分析"></a>1.网站分析</h3><p>关于scrapy爬虫架构和语法的介绍在之前的文章有讲过，本节主要分析爬虫的设计细节和代码结构。<br><a id="more"></a><br><a href="http://www.stat-nba.com/" target="_blank" rel="noopener">http://www.stat-nba.com/</a>网站对爬虫很友好，表格数据结构清晰，非常容易爬取，而且没有限制频繁访问和下载条数，所以直接写爬虫就好了。</p>
-<p>我抓取的数据是，球员列表(<a href="http://www.stat-nba.com/playerList.php" target="_blank" rel="noopener">http://www.stat-nba.com/playerList.php</a>)里展示的所有球员的详细数据。</p>
-<p>详细数据页面，以詹姆斯为例<a href="http://www.stat-nba.com/player/1862.html" target="_blank" rel="noopener">http://www.stat-nba.com/player/1862.html</a>,有五个纬度的数据表格，分别是<strong>场均数据</strong>,<strong>总计数据</strong>,<strong>单场最高</strong>,<strong>进阶数据</strong>（一）,<strong>进阶数据</strong>（二），注意到这其实是一张表格，列主键可以看作是<strong>赛季</strong>，每个表格包括球员的全部赛季值，所以各表行数相同，可以当作是表格太宽，做了分表处理，实际上我们可以用一个大的对象整合所有表的列做字段。但是在网页dom上还是要对各个表去做抽取，本次主要抽取了第一四五个，<strong>总计数据</strong>和<strong>单场最高</strong>对后面的数据分析影响不大，有需要的可以按照代码结构再拓展。</p>
-<h3 id="2-爬虫设计"><a href="#2-爬虫设计" class="headerlink" title="2.爬虫设计"></a>2.爬虫设计</h3><p>item对象，把三个表的列去重作为要爬取的字段。</p>
-<p>抓取球员列表和详细数据，需要两层循环，第一层：遍历球员列表，获取href属性拼接url，发送请求获取球员详细信息；第二层：详细信息页面，遍历三个表的tr、td，这里注意每一条item数据应该是对应三个表的第一条数据的汇总，再各个td取值。针对上个问题，可以分别做json映射，以要取的列所在表的下标为键，列名为值，分别做遍历即可了。映射的好处是做viewmodel，不用再判断名称，直接取键值就可以，而且字段个数多，提出来放json里，代码更容易维护。</p>
-<p>还有些小细节，根据球员的数据特点大概分两种，一种是数值，比如得分，篮板；一种是百分比，命中率，失误率。所以命名时可以加类似”_rate”后缀作区分，便于理解。</p>
-<p>数据文件：<a href="https://SuiMingYang.github.io/img/nba_stat_1/nba_stat.csv" target="_blank" rel="noopener">球星数据</a><br>代码链接：<a href="https://github.com/SuiMingYang/stat_nba_scrapy/tree/dev" target="_blank" rel="noopener">nba_stat爬虫</a></p>
+        <h2 id="一、推荐理论基本概念"><a href="#一、推荐理论基本概念" class="headerlink" title="一、推荐理论基本概念"></a>一、推荐理论基本概念</h2><p>推荐的要素：<b>人，物品，关系</b><br><a id="more"></a><br>推荐的意义：<b>本质是将实物和用户联系起来。</b></p>
+<h2 id="二、推荐的应用场景"><a href="#二、推荐的应用场景" class="headerlink" title="二、推荐的应用场景"></a>二、推荐的应用场景</h2><p>主动搜索：用户知道关键词，可以准确的描述需要的物品。<br>被动过滤：用户无显性需求，不知道关键词和目标物品，靠推荐系统推送，用户被动的逐条筛选。</p>
+<h2 id="三、推荐方式"><a href="#三、推荐方式" class="headerlink" title="三、推荐方式"></a>三、推荐方式</h2><p>向朋友咨询：社会化推荐<br>喜欢的导演和类型的推荐：基于内容的推荐<br>参考排行榜：协同过滤</p>
+<p>应用领域：</p>
+<ol>
+<li>基于人的维度：审美（电商，社交），内容（电影，书籍，音乐），爱好（体育周边，娱乐周边），广告，位置。</li>
+<li>基于物品的维度：行业，用途，特性。</li>
+</ol>
+<p>行业不同，实践流程和反馈机制的设计有很大区别。</p>
+<h2 id="四、推荐的流程和实验"><a href="#四、推荐的流程和实验" class="headerlink" title="四、推荐的流程和实验"></a>四、推荐的流程和实验</h2><ol>
+<li>预启动<br>设定目标，AB测试组；获取少量用户信息，主观询问统计，提取特征。</li>
+<li>冷启动<br>没有线上数据，可以推荐热点，离线计算；基于社交推荐。</li>
+<li>数据分析<br>实时计算，得到[用户-物品]日志数据，客观行为分析，得到推荐关系。</li>
+<li>实验反馈<br>评价推荐关系的优劣，结论迭代下一轮实验。</li>
+</ol>
+<h2 id="四、问题和局限"><a href="#四、问题和局限" class="headerlink" title="四、问题和局限"></a>四、问题和局限</h2><ol>
+<li><b>获取用户的偏好和需求模糊</b><br>（1）首先，现在的自然语言理解技术很难理解用户用来述兴趣的自然语言;<br>（2）其次，用户的兴趣是不断变化的，但用户不会不停地更新兴趣描述;<br>（3）最后，很多时候用户并不知道自己喜欢什么，或者很难用语言描述自己喜欢什么。</li>
+</ol>
+<ol start="2">
+<li><p><b>马太效应</b><br>（1）覆盖率：推荐系统的初衷是希望消除马太效应，使得各种物品都能被展示给对它们感兴趣的某一类人群。<br>（2）多样性：推荐种类随着推荐和反馈，趋于收敛，即用户喜欢悬疑电影，不断的推荐悬疑类，导致收到用户偏好的反馈和悬疑的相似度越来越趋于1，应该推荐多类型的。<br>（3）解决方式：两种方式结合，用itemCF推荐深度收敛，用userCF推荐种类，发散维度。</p>
+</li>
+<li><p><b>相关性≠因果性</b><br>（1）推荐螺丝钉和螺母的规则是正确的，但是几乎没有意义，因为很少会单独买。<br>（2）排除本身销量就大的，相关性是有主次之分的，弱者去关联强者。例如买了啤酒的很多人都买了香烟，但是香烟本身就是低价高频的刚需，会发现很多用户不管买不买啤酒，都会买烟，所以推荐无效果。<br>（3）买完电脑的，还是推荐电脑没有意义，高额短频消费特征。<br>（4）喜欢吃荔枝的大部分都喜欢吃桂圆，或者买了面包的大部分会一起购买牛奶，这种才是我们需要的挖掘。</p>
+</li>
+<li><p><b>冷启动问题</b><br>（1）场景：用户冷启动，物品冷启动，系统冷启动。<br>（2）解决方法：用非个性化的推荐-&gt;热点推荐，代表性个性鲜明物品，推荐多样，积累数据，再做个性化推荐。</p>
+</li>
+<li><b>推荐结果的反馈层级</b><br>以电商行业为例：应该观察下单率-&gt;有效下单率（无退货换货），其中有效成交要再看评价-&gt;评价中再看是问题类型（是否是质量问题），如果是非质量问题中的偏好选择问题才是推荐算法的锅。</li>
+</ol>
+<h2 id="五、评价指标的选定和评估"><a href="#五、评价指标的选定和评估" class="headerlink" title="五、评价指标的选定和评估"></a>五、评价指标的选定和评估</h2><p>(暂时参考一个问题)<br>问题：该问卷的调查问题是请问下面哪句话最能描述你看到推荐结果后的感受?<br>1.推荐的论文都是我非常想看的。<br>2.推荐的论文很多我都看过了，确实是符合我兴趣的不错论文。<br>3.推荐的论文和我的研究兴趣是相关的，但我并不喜欢。<br>4.推荐的论文我很喜欢，但是和我的研究不相关。<br>5.不知道为什么会推荐这些论文，它们和我的兴趣丝毫没有关系。</p>
+<p>分析和调整策略：<br>1-&gt;过拟合：推荐论文过于完美，反而不利于推荐算法发散，但不是最差的结果，可以添加部分userCF协同推荐。<br>2-&gt;最好。<br>3-&gt;用户的行为反馈占的权重大了，虽然偏好不稳定，单行为不会说谎，用户不喜欢，应该建立联系，找出短期内用户偏好。<br>4-&gt;和3是镜像，用户的偏好占的权重大了。<br>5-&gt;欠拟合了。</p>
+<h2 id="七、影响推荐的上下文"><a href="#七、影响推荐的上下文" class="headerlink" title="七、影响推荐的上下文"></a>七、影响推荐的上下文</h2><p>除了用户的偏好和用户的行为分析，还存在除此之外影响用户决策的信息：<br>比如时间，偏好不稳定，随时间远近变化。<br>物品有季节性和热点性。<br>宏观政策的影响。</p>
+<!--
+相似度：用户相似度和最近行为
+
+获取初始化数据：
+用户注册数据：年龄，职业，身高，体重，家庭成员。
+
+信任：好友推荐增加信任度，社群营销，（微信读书）
+
+求职岗位推荐，（Boss直聘）
+-->
+<hr>
+<p>参考资料：<br><a href="http://suimingyang.github.io/img/commendresources/长尾理论.pdf" target="_blank" rel="noopener">长尾理论.pdf</a><br><a href="http://suimingyang.github.io/img/commendresources/推荐系统实践.pdf" target="_blank" rel="noopener">推荐系统实践.pdf</a><br><a href="https://www.bilibili.com/video/av23933161/?p=1" target="_blank" rel="noopener">清华数据挖掘导论-入门视频</a></p>
 
       
 
@@ -219,11 +254,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
         		</li>
       		
 		</ul>
@@ -285,7 +316,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/18/nba-stat网站数据挖掘（一）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/25/推荐算法理论/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,18 +330,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/19/nba-stat网站数据挖掘（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/27/推荐算法应用/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          nba-stat网站数据挖掘（二）
+          推荐算法应用
         
       </div>
     </a>
   
   
-    <a href="/2018/09/13/Kaggle项目HousePrices/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kaggle项目HousePrices</div>
+    <a href="/2019/03/15/模型选择和参数调优/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">模型选择和参数调优</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -341,8 +372,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2018/09/18/nba-stat网站数据挖掘（一）/", 
-    sourceId: "nba-stat网站数据挖掘（一）",
+    url: "http://yoursite.com/2019/03/25/推荐算法理论/", 
+    sourceId: "推荐算法理论",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -379,7 +410,7 @@
 <script src="//www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2018/09/18/nba-stat网站数据挖掘（一）/",
+  id: "http://yoursite.com/2019/03/25/推荐算法理论/",
   owner: 'suimingyang',
   repo: 'suimingyang.github.io',
   oauth: {
