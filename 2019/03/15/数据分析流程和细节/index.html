@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>数据分析流程和细节 | James Sui的博客</title>
+  <title>数据分析完整流程和细节 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、数据分析目的和意义">
+  <meta name="description" content="一、数据分析目的和问题定义">
 <meta name="keywords" content="scikit-learn,数据分析,数据预处理,模型选择,参数调优">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据分析流程和细节">
+<meta property="og:title" content="数据分析完整流程和细节">
 <meta property="og:url" content="http://yoursite.com/2019/03/15/数据分析流程和细节/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="一、数据分析目的和意义">
+<meta property="og:description" content="一、数据分析目的和问题定义">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-27T09:24:49.484Z">
+<meta property="og:updated_time" content="2019-05-30T09:35:07.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据分析流程和细节">
-<meta name="twitter:description" content="一、数据分析目的和意义">
+<meta name="twitter:title" content="数据分析完整流程和细节">
+<meta name="twitter:description" content="一、数据分析目的和问题定义">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -158,7 +158,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据分析流程和细节
+      数据分析完整流程和细节
     </h1>
   
 
@@ -172,10 +172,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、数据分析目的和意义"><a href="#一、数据分析目的和意义" class="headerlink" title="一、数据分析目的和意义"></a>一、数据分析目的和意义</h2><a id="more"></a>
-<h2 id="二、数据准备"><a href="#二、数据准备" class="headerlink" title="二、数据准备"></a>二、数据准备</h2><h2 id="三、数据预处理"><a href="#三、数据预处理" class="headerlink" title="三、数据预处理"></a>三、数据预处理</h2><h2 id="四、模型选择"><a href="#四、模型选择" class="headerlink" title="四、模型选择"></a>四、模型选择</h2><h2 id="五、参数调优"><a href="#五、参数调优" class="headerlink" title="五、参数调优"></a>五、参数调优</h2><p>调超参</p>
-<p>归一化使用的场景：当模型需要算距离或者梯度下降时，例如KNN，svm和聚类，单位对数值造成的影响不可忽略，就要使用归一化，而在树形模型（决策树，随机森林）中则不需要。</p>
-<h2 id="六、"><a href="#六、" class="headerlink" title="六、"></a>六、</h2><h2 id="七、"><a href="#七、" class="headerlink" title="七、"></a>七、</h2><h2 id="八、"><a href="#八、" class="headerlink" title="八、"></a>八、</h2>
+        <h2 id="一、数据分析目的和问题定义"><a href="#一、数据分析目的和问题定义" class="headerlink" title="一、数据分析目的和问题定义"></a>一、数据分析目的和问题定义</h2><a id="more"></a>
+<p>分类和预测<br>数据挖掘<br>异常值检测</p>
+<h2 id="二、数据准备"><a href="#二、数据准备" class="headerlink" title="二、数据准备"></a>二、数据准备</h2><h4 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h4><p><strong>处理缺失值</strong>：忽略；删除；补全（均值插补、同类均值插补、建模预测、高维映射、多重插补、极大似然估计、压缩感知和矩阵补全）</p>
+<p><strong>特征编码</strong>：适用于离散数据，且离散集合数少。数值化</p>
+<ol>
+<li>特征数值化：映射成数字，适用于对数字也就是对距离不敏感的，只做逻辑上的分类用。</li>
+<li>one-hot编码：定类问题，本质是拆解维度成几类，所以就限定了被拆开的维度本身不能过多，不然又导致维度爆炸等其他问题。</li>
+</ol>
+<p><strong>数据归一化</strong>：数据标准化、距离中心化、比例归一化</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>z-score标准化</td>
+<td>$x_i=\frac{x_i-\overline{X}}{S}$</td>
+<td>空间正态分布，便于</td>
+<td></td>
+</tr>
+<tr>
+<td>距离中心化</td>
+<td>$x_i=\frac{x_i-x_{min}}{x_{max}-x_{min}}$</td>
+<td>同标准化，空间为正数</td>
+<td></td>
+</tr>
+<tr>
+<td>比例归一化</td>
+<td>$x_i=\frac{x_i}{\sum_{k=1}^nx}$</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>使用的场景：当模型需要算距离或者梯度下降时，例如KNN，svm和聚类，单位对数值造成的影响不可忽略，就要使用归一化，而在树形模型（决策树，随机森林）中则不需要。</p>
+<p>目的：消除量纲，便于梯度下降收敛。</p>
+<p><strong>特征选择</strong>：降维<br>意义：减轻维数灾难问题；降低学习任务的难度。<br>方法：PCA，LDA</p>
+<p><strong>处理离群点</strong>：异常值</p>
+<ol>
+<li>离群点的定义：需要根据行业内的具体指标细分，例如电商行业的订单价格，如果品类是衣服的话客单价在一百元左右，但是单价从配饰几块钱到奢侈品几万块都有，都是真实有效的数据，所以真实性数据不必要去除，根据实际业务判定。</li>
+<li>离群点检测方法：<br>（1）箱盒图：实验研究时经常使用，非常直观的展示出异常数据。<br>（2）散点图：研究X和Y的关系时，可直观展示查看是否有异常数据。<br>（3）描述分析：可通过最大最小值等各类指标大致判断数据是否有异常。<br>（4）缺失数字小于设定标准的数字大于设定标准的数字 大于3个标准差。</li>
+</ol>
+<p>指标除了受行业“看不见的手”影响，还有宏观因素影响，比如房价，薪资，应用场景中，离群点通常很难筛选出，而且配判定为离群点的数据本身就包含着数据可能存在的问题，一些时候还可以作为发现问题而寻找的特征数据，所以如何处理离群点还要根据需求和分析目的。</p>
+<h2 id="三、模型选择和评估模型"><a href="#三、模型选择和评估模型" class="headerlink" title="三、模型选择和评估模型"></a>三、模型选择和评估模型</h2><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>模型验证的方法：简单交叉验证，S折交叉验证，留一交叉验证</p>
+<h4 id="参数调优"><a href="#参数调优" class="headerlink" title="参数调优"></a>参数调优</h4><p><strong>超参数的选择</strong>：网格搜索，随机采样，遗传算法，贝叶斯优化，基于种群的训练</p>
+<p><strong>评估函数的选择</strong>：分类：Accuracy，Recall，F1，ROC，AUC，回归：MAE，MSE，EVS，$R^2$</p>
+<p><strong>评估方法</strong>：学习曲线<br>根据函数曲线分布特征，分析训练集和验证机的准确率，分析拟合度和偏差方差。</p>
+<p><strong>过拟合处理方法</strong>：<br>L1正则<br>L2正则<br>交叉验证<br>Early stopping<br>Dropout<br>增加训练数据可以有限的避免过拟合<br>特征选择，减少特征数或使用较少的特征组合，对于按区间离散化的特征，增大划分的区间<br>Bagging ,将多个弱学习器Bagging 一下效果会好很多，比如随机森林等</p>
+<p><strong>欠拟合处理方法</strong>：<br>增加新特征，可以考虑加入进特征组合、高次特征，来增大假设空间;<br>尝试非线性模型，比如核SVM 、决策树、DNN等模型;<br>如果有正则项可以较小正则项参数 $\lambda$;<br>Boosting ,Boosting 往往会有较小的 Bias，比如 Gradient Boosting 等。</p>
+
       
 
       
@@ -307,11 +356,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/25/推荐算法理论/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/19/机器学习算法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          推荐算法理论
+          机器学习算法
         
       </div>
     </a>
@@ -502,6 +551,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">leecode</a>
               </li>
              
@@ -510,11 +563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,11 +591,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,15 +627,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,18 +655,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">消费</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户画像</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据预处理</a>
               </li>
              
@@ -631,6 +668,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">社群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">消费</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">用户画像</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
               </li>
             
             <div class="clearfix"></div>
