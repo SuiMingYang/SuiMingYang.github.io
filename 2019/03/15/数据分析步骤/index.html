@@ -9,14 +9,14 @@
   <title>数据分析步骤 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、数据分析目的和问题定义">
-<meta name="keywords" content="数据分析,scikit-learn,数据预处理,模型选择,参数调优">
+<meta name="keywords" content="scikit-learn,数据分析,数据预处理,模型选择,参数调优">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据分析步骤">
 <meta property="og:url" content="http://yoursite.com/2019/03/15/数据分析步骤/index.html">
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="一、数据分析目的和问题定义">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-30T09:38:01.844Z">
+<meta property="og:updated_time" content="2019-06-03T12:13:14.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据分析步骤">
 <meta name="twitter:description" content="一、数据分析目的和问题定义">
@@ -222,7 +222,7 @@
 <h4 id="参数调优"><a href="#参数调优" class="headerlink" title="参数调优"></a>参数调优</h4><p><strong>超参数的选择</strong>：网格搜索，随机采样，遗传算法，贝叶斯优化，基于种群的训练</p>
 <p><strong>评估函数的选择</strong>：分类：Accuracy，Recall，F1，ROC，AUC，回归：MAE，MSE，EVS，$R^2$</p>
 <p><strong>评估方法</strong>：学习曲线<br>根据函数曲线分布特征，分析训练集和验证机的准确率，分析拟合度和偏差方差。</p>
-<p><strong>过拟合处理方法</strong>：<br>L1正则<br>L2正则<br>交叉验证<br>Early stopping<br>Dropout<br>增加训练数据可以有限的避免过拟合<br>特征选择，减少特征数或使用较少的特征组合，对于按区间离散化的特征，增大划分的区间<br>Bagging ,将多个弱学习器Bagging 一下效果会好很多，比如随机森林等</p>
+<p><strong>过拟合处理方法</strong>：<br><!--L1正则：减少数据维度--><br>L2正则<br>交叉验证<br>Early stopping<br>Dropout<br>增加训练数据可以有限的避免过拟合<br>特征选择，减少特征数或使用较少的特征组合，对于按区间离散化的特征，增大划分的区间<br>Bagging ,将多个弱学习器Bagging 一下效果会好很多，比如随机森林等</p>
 <p><strong>欠拟合处理方法</strong>：<br>增加新特征，可以考虑加入进特征组合、高次特征，来增大假设空间;<br>尝试非线性模型，比如核SVM 、决策树、DNN等模型;<br>如果有正则项可以较小正则项参数 $\lambda$;<br>Boosting ,Boosting 往往会有较小的 Bias，比如 Gradient Boosting 等。</p>
 
       
@@ -264,11 +264,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">scikit-learn</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">scikit-learn</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -547,11 +547,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,14 +571,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
@@ -591,14 +583,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">scikit-learn</a>
               </li>
              
@@ -607,15 +591,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,7 +639,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据预处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模型选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">参数调优</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,15 +667,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据预处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模型选择</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">参数调优</a>
+                <a href="javascript:void(0)" class="js-tag color3">社群</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,7 +683,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">社群</a>
+                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
               </li>
             
             <div class="clearfix"></div>
