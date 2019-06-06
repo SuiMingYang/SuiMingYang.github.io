@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>使用GitKraKen可视化工具管理git源码 | James Sui的博客</title>
+  <title>数据分析实战 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考文章：https://www.cnblogs.com/thousfeet/p/7840932.html">
-<meta name="keywords" content="GitKraKen,github">
+  <meta name="description" content="z-score标准化">
+<meta name="keywords" content="scikit-learn,数据分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用GitKraKen可视化工具管理git源码">
-<meta property="og:url" content="http://yoursite.com/2018/08/25/使用GitKraKen可视化工具管理git源码/index.html">
+<meta property="og:title" content="数据分析实战">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/数据分析实战/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="参考文章：https://www.cnblogs.com/thousfeet/p/7840932.html">
+<meta property="og:description" content="z-score标准化">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-30T14:57:43.048Z">
+<meta property="og:updated_time" content="2019-06-06T06:02:55.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用GitKraKen可视化工具管理git源码">
-<meta name="twitter:description" content="参考文章：https://www.cnblogs.com/thousfeet/p/7840932.html">
+<meta name="twitter:title" content="数据分析实战">
+<meta name="twitter:description" content="z-score标准化">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -151,28 +151,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-使用GitKraKen可视化工具管理git源码" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-数据分析实战" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      使用GitKraKen可视化工具管理git源码
+      数据分析实战
     </h1>
   
 
 
         
-        <a href="/2018/08/25/使用GitKraKen可视化工具管理git源码/" class="archive-article-date">
-  	<time datetime="2018-08-25T12:24:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
+        <a href="/2019/04/29/数据分析实战/" class="archive-article-date">
+  	<time datetime="2019-04-29T03:29:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考文章：<a href="https://www.cnblogs.com/thousfeet/p/7840932.html" target="_blank" rel="noopener">https://www.cnblogs.com/thousfeet/p/7840932.html</a></p>
+        <p>z-score标准化<br><a id="more"></a><br>    preprocessing.scale(X)</p>
+<p>使用sklearn.preprocessing.StandardScaler类，使用该类的好处在于可以保存训练集中的参数（均值、方差）直接使用其对象转换测试集数据。<br>    preprocessing.StandardScaler().fit(X)</p>
+<p>距离归一化<br>    preprocessing.MinMaxScaler().fit_transform(X_train)</p>
+<p>preprocessing.normalize(X, norm=’l2’)</p>
+<p>preprocessing.Normalizer().fit(X)</p>
+<p>参考资料<br><a href="https://www.cnblogs.com/chaosimple/p/4153167.html" target="_blank" rel="noopener">关于使用sklearn进行数据预处理 —— 归一化/标准化/正则化</a></p>
 
       
 
@@ -213,11 +218,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GitKraKen</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">scikit-learn</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		
 		</ul>
@@ -279,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/25/使用GitKraKen可视化工具管理git源码/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/29/数据分析实战/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +298,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/05/leecode-62-不同路径/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/15/深度学习/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          leecode:62.不同路径
+          神经网络和深度学习
         
       </div>
     </a>
   
   
-    <a href="/2018/08/24/kaggle项目leaf-classification/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">kaggle项目:leaf-classification</div>
+    <a href="/2019/04/22/pytorch框架使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pytorch框架使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,8 +340,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2018/08/25/使用GitKraKen可视化工具管理git源码/", 
-    sourceId: "使用GitKraKen可视化工具管理git源码",
+    url: "http://yoursite.com/2019/04/29/数据分析实战/", 
+    sourceId: "数据分析实战",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -373,7 +378,7 @@
 <script src="//www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2018/08/25/使用GitKraKen可视化工具管理git源码/",
+  id: "http://yoursite.com/2019/04/29/数据分析实战/",
   owner: 'suimingyang',
   repo: 'suimingyang.github.io',
   oauth: {
