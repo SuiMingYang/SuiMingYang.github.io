@@ -182,6 +182,10 @@
 <pre><code>neg/XX.jpg
 
 # neg/XX.jpg 仅放图片路径
+</code></pre><p> train.sh脚本导出</p>
+<pre><code>train_file=test.txt
+path=pos #path=neg
+find $path -name *.jpg &gt; $train_file
 </code></pre></li>
 </ol>
 <h3 id="训练步骤"><a href="#训练步骤" class="headerlink" title="训练步骤"></a>训练步骤</h3><ol>
@@ -367,117 +371,6 @@
 
 
   
-    <article id="post-数据库特点对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/29/数据库特点对比/">数据库特点对比</a>
-    </h1>
-  
-
-
-        
-        <a href="/2019/06/29/数据库特点对比/" class="archive-article-date">
-  	<time datetime="2019-06-29T04:24:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主流数据库对比</p>
-<p>MongoDB不需要定义表结构这个特点给表结构的修改带来了极大的方便，但是也给多表查询、复杂事务等高级操作带来了阻碍。</p>
-<p>Redis会把所有数据加载到内存中的，Redis能得到远高于MongoDB这类常规数据库的读写性能。当然，Redis的功能还不止key-value存储这么简单，相较它的key-value前辈Memcached，Redis还支持数据持久化，list、set等多种数据结构，主从复制备份等一些列功能，因此Redis绝对称得上是key-value数据库中功能最全面、最简单易用的款。</p>
-<p>由于阉割掉了数据表、字段这样的重要特性，且所有的查询都依赖key，因此Redis无法提供常规数据库所具备的多列查询、区段查询等复杂查询功能。同时，由于Redis需要把数据存在内存中，这也大大限制了Redis可存储的数据量，这也决定了Redis难以用在数据规模很大的应用场景中。</p>
-<p>如果你的数据的逻辑结构非常复杂，经常需要进行复杂的多表查询或者事务操作，那显然还是MySQL这类关系型数据库更合适。</p>
-<p><a href="https://leriou.github.io/2019-01-09-mongodb-compareto-elasticsearch/" target="_blank" rel="noopener">https://leriou.github.io/2019-01-09-mongodb-compareto-elasticsearch/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">postgresql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mongodb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hbase</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tablestore</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据库引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <!--2019-05-20-->
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/29/数据库特点对比/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-杭州房源分析系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -501,30 +394,9 @@
       
         <h1 id="杭州房源分析"><a href="#杭州房源分析" class="headerlink" title="杭州房源分析"></a>杭州房源分析</h1><h3 id="一、项目主题"><a href="#一、项目主题" class="headerlink" title="一、项目主题"></a>一、项目主题</h3><p>分析杭州历年城区内小区房价变化，根据房地产知识定义楼盘，为用户购房提供决策参考。（可分析其他城市，替换第一个城区链接即可。）</p>
 <hr>
-<h3 id="二、项目开发"><a href="#二、项目开发" class="headerlink" title="二、项目开发"></a>二、项目开发</h3><h5 id="1-数据爬虫"><a href="#1-数据爬虫" class="headerlink" title="1.数据爬虫"></a>1.数据爬虫</h5><p>获取房天下的数据源，数据入库。</p>
-<p>指标：小区名，房价，经度，纬度，板块评级，物业评级，活跃度评级，教育评级，搜索热度。</p>
-<p>待分析出的指标：同比，环比，分类，综合评分，预测房价。</p>
-<h6 id="（1）分析网站结构"><a href="#（1）分析网站结构" class="headerlink" title="（1）分析网站结构"></a>（1）分析网站结构</h6><p>主城区链接：get请求<br>    <a href="https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=</a></p>
-<p>商业区：get请求<br>    <a href="https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=</a></p>
-<p>小区：get请求<br>    <a href="https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=</a></p>
-<p>历年：get请求<br>    <a href="https://fangjia.fang.com/fangjia/common/ajaxdetailtrenddata/hz?dataType=proj&amp;projcode=2010780380&amp;year=2" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/common/ajaxdetailtrenddata/hz?dataType=proj&amp;projcode=2010780380&amp;year=2</a></p>
-<p>requests请求数据接口，selenium获取页面静态数据。</p>
-<p>树形结构嵌套请求，可以用for循环，可以用队列。</p>
-<p>执行<code>crawl_data.py</code>脚本，看着数据一条一条的录入，小有成就感。</p>
-<h5 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2.数据预处理"></a>2.数据预处理</h5><p>清洗脏数据，整理数据维度。<br>这个过程可以说是最麻烦的了，各种不确定，不规范的数据，都要在这阶段解决，处理成规范的可用的数据。</p>
-<h6 id="（1）缺省值处理"><a href="#（1）缺省值处理" class="headerlink" title="（1）缺省值处理"></a>（1）缺省值处理</h6><p>缺少的值不容易估算，删除。</p>
-<h6 id="（2）数据归一化"><a href="#（2）数据归一化" class="headerlink" title="（2）数据归一化"></a>（2）数据归一化</h6><h6 id="（3）"><a href="#（3）" class="headerlink" title="（3）"></a>（3）</h6><p>执行<code>data_analysis.py</code>脚本</p>
-<h5 id="3-数据分析"><a href="#3-数据分析" class="headerlink" title="3.数据分析"></a>3.数据分析</h5><h6 id="（1）建立指标体系"><a href="#（1）建立指标体系" class="headerlink" title="（1）建立指标体系"></a>（1）建立指标体系</h6><p>房地产指标，定义楼盘，分类。<br>环比，同比-增长，下跌</p>
-<h6 id="（2）楼盘关联指标"><a href="#（2）楼盘关联指标" class="headerlink" title="（2）楼盘关联指标"></a>（2）楼盘关联指标</h6><p>选筹，<br>返租，<br>远大大（远郊，大盘，大户型），<br>公寓，<br>商铺，<br>标杆盘，<br>别墅，</p>
-<p>中央商务区，<br>地铁投资，<br>被城市包住的郊区<br>睡城<br>城乡结合部<br>新区<br>学区房<br>笋盘</p>
-<h6 id="（3）数据可视化"><a href="#（3）数据可视化" class="headerlink" title="（3）数据可视化"></a>（3）数据可视化</h6><h5 id="4-数据预测"><a href="#4-数据预测" class="headerlink" title="4.数据预测"></a>4.数据预测</h5><h6 id="（1）模型选择"><a href="#（1）模型选择" class="headerlink" title="（1）模型选择"></a>（1）模型选择</h6><p>微观层面上可以预测，但是实际上会受政策，经济等因素的影响，所以预测仅仅是在微观层面上，即仅考虑指标和数值的维度上，提供参考。</p>
-<h6 id="（2）参数调优"><a href="#（2）参数调优" class="headerlink" title="（2）参数调优"></a>（2）参数调优</h6><h6 id="（3）输出分类结果"><a href="#（3）输出分类结果" class="headerlink" title="（3）输出分类结果"></a>（3）输出分类结果</h6><h6 id="（4）房源评估系统"><a href="#（4）房源评估系统" class="headerlink" title="（4）房源评估系统"></a>（4）房源评估系统</h6><hr>
-<h3 id="三、项目结论"><a href="#三、项目结论" class="headerlink" title="三、项目结论"></a>三、项目结论</h3><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h5><h6 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h6><h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><h6 id="（1）-1"><a href="#（1）-1" class="headerlink" title="（1）"></a>（1）</h6><h2 id="源码地址"><a href="#源码地址" class="headerlink" title="!源码地址"></a><a href="https://github.com/SuiMingYang/hz-house-price-statics" target="_blank" rel="noopener">!源码地址</a></h2><p>Author: suimingyang </p>
-<p>Email : <a href="mailto:suimingyang123@gmail.com" target="_blank" rel="noopener">suimingyang123@gmail.com</a></p>
-<p>Blog  : <a href="https://suimingyang.github.io/" target="_blank" rel="noopener">https://suimingyang.github.io/</a></p>
-<p>Github: <a href="https://github.com/SuiMingYang/" target="_blank" rel="noopener">https://github.com/SuiMingYang/</a></p>
-<hr>
-
+        
+          <a class="article-more-a" href="/2019/06/21/杭州房源分析系统/#more">more >></a>
+        
       
 
       
@@ -1118,7 +990,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、数据分析目的和问题定义"><a href="#一、数据分析目的和问题定义" class="headerlink" title="一、数据分析目的和问题定义"></a>一、数据分析目的和问题定义</h2>
+        <h2 id="一、数据分析目的和问题定义"><a href="#一、数据分析目的和问题定义" class="headerlink" title="一、数据分析目的和问题定义"></a>一、数据分析目的和问题定义</h2><p>分类和预测<br>
         
           <a class="article-more-a" href="/2019/03/15/数据分析步骤/#more">more >></a>
         
@@ -1164,6 +1036,90 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/15/数据分析步骤/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-kaggle项目ForestCoverType" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/24/kaggle项目ForestCoverType/">kaggle项目ForestCoverType</a>
+    </h1>
+  
+
+
+        
+        <a href="/2019/02/24/kaggle项目ForestCoverType/" class="archive-article-date">
+  	<time datetime="2019-02-24T04:41:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>Random forests? Cover trees? Not so fast, computer nerds. We’re talking about the real thing.<br>
+        
+          <a class="article-more-a" href="/2019/02/24/kaggle项目ForestCoverType/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kaggle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分类问题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      <!--2019-05-20-->
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/24/kaggle项目ForestCoverType/">展开全文 >></a>
         </p>
       
 
@@ -1338,14 +1294,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">级联分类器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
@@ -1355,6 +1303,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">级联分类器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,14 +1330,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nlp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jieba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
               </li>
              
@@ -1398,23 +1346,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nlp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jieba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">surprise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运营</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">房地产</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1430,43 +1374,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+                <a href="javascript:void(0)" class="js-tag color4">房地产</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hive</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tablestore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库引擎</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
+                <a href="javascript:void(0)" class="js-tag color3">运营</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,6 +1399,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">社群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
               </li>
             
             <div class="clearfix"></div>
