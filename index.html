@@ -148,6 +148,534 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-opencv级联训练图像分类器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/03/opencv级联训练图像分类器/">opencv级联训练图像分类器</a>
+    </h1>
+  
+
+
+        
+        <a href="/2019/07/03/opencv级联训练图像分类器/" class="archive-article-date">
+  	<time datetime="2019-07-03T03:46:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="训练opencv的级联分类器"><a href="#训练opencv的级联分类器" class="headerlink" title="训练opencv的级联分类器"></a>训练opencv的级联分类器</h1><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>mac ox操作系统<br>安装opencv：<code>conda install opencv</code><br>安装好opencv后就可以使用里面的脚本训练了。</p>
+<h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><ol>
+<li>正向数据：pos/XX.jpg</li>
+<li>负向数据：neg/XX.jpg</li>
+<li><p>正向文本<code>pos.txt</code>:</p>
+<pre><code>pos/XX.jpg 1 0 0 60 60
+
+# pos/XX.jpg 图片路径，1 样本数，60 宽，60 高
+</code></pre></li>
+<li><p>负向文本<code>neg.txt</code>：</p>
+<pre><code>neg/XX.jpg
+
+# neg/XX.jpg 仅放图片路径
+</code></pre></li>
+</ol>
+<h3 id="训练步骤"><a href="#训练步骤" class="headerlink" title="训练步骤"></a>训练步骤</h3><ol>
+<li>训练正向数据的vec文件<br><code>opencv_createsamples -vec pos.vec  -info pos.txt -num 15 -w 60 -h 60 pause</code></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-vec</td>
+<td>pos.vec</td>
+<td>生成的vec文件名</td>
+</tr>
+<tr>
+<td>-info</td>
+<td>pos.txt</td>
+<td>使用的正向脚本</td>
+</tr>
+<tr>
+<td>-num</td>
+<td>15</td>
+<td>样本数 </td>
+</tr>
+<tr>
+<td>-w</td>
+<td>60</td>
+<td>图像宽</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>60</td>
+<td>图像高</td>
+</tr>
+</tbody>
+</table>
+<p>目录出现<code>pos.vec</code>说明训练成功</p>
+<ol start="2">
+<li>训练xml文档<br>新建<code>cascades</code>目录</li>
+</ol>
+<p><code>opencv_traincascade -data cascades -vec pos.vec -bg neg.txt -numPos 15 -numNeg 15 -numStages 5 -w 60 -h 60 -minHitRate 0.9999 -maxFalseAlarmRate 0.5 -mem 2048 -mode ALL</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-data</td>
+<td>cascades</td>
+<td>训练后生成xml的文件夹</td>
+</tr>
+<tr>
+<td>-vec</td>
+<td>pos.vec</td>
+<td>正向数据</td>
+</tr>
+<tr>
+<td>-bg</td>
+<td>neg.txt</td>
+<td>负向数据</td>
+</tr>
+<tr>
+<td>-numPos</td>
+<td>15</td>
+<td>正向样本数</td>
+</tr>
+<tr>
+<td>-numNeg</td>
+<td>15</td>
+<td>负向样本数</td>
+</tr>
+<tr>
+<td>-numStages</td>
+<td>5</td>
+<td>训练迭代数</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>60</td>
+<td>图像宽</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>60</td>
+<td>图像高</td>
+</tr>
+<tr>
+<td>-minHitRate</td>
+<td>0.9999</td>
+<td>期望最小检测率</td>
+</tr>
+<tr>
+<td>-maxFalseAlarmRate</td>
+<td>0.5</td>
+<td>期望最大误检率</td>
+</tr>
+<tr>
+<td>-mem</td>
+<td>2048</td>
+<td>使用的计算内存数（M）</td>
+</tr>
+<tr>
+<td>-mode</td>
+<td>ALL</td>
+<td>选择用来训练的haar特征集的种类</td>
+</tr>
+</tbody>
+</table>
+<p>参考文章：<br><a href="https://blog.csdn.net/txiaomiao/article/details/64132273" target="_blank" rel="noopener">https://blog.csdn.net/txiaomiao/article/details/64132273</a>(windows版本)</p>
+<p>代码地址：<br><a href="https://github.com/SuiMingYang/opencv-haar-classify" target="_blank" rel="noopener">https://github.com/SuiMingYang/opencv-haar-classify</a></p>
+<hr>
+<p>Author: suimingyang </p>
+<p>Email : <a href="mailto:suimingyang123@gmail.com" target="_blank" rel="noopener">suimingyang123@gmail.com</a></p>
+<p>Blog  : <a href="https://suimingyang.github.io/" target="_blank" rel="noopener">https://suimingyang.github.io/</a></p>
+<p>Github: <a href="https://github.com/SuiMingYang/" target="_blank" rel="noopener">https://github.com/SuiMingYang/</a></p>
+<hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">opencv</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">级联分类器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      <!--2019-05-20-->
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/03/opencv级联训练图像分类器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据库特点对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/29/数据库特点对比/">数据库特点对比</a>
+    </h1>
+  
+
+
+        
+        <a href="/2019/06/29/数据库特点对比/" class="archive-article-date">
+  	<time datetime="2019-06-29T04:24:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主流数据库对比</p>
+<p>MongoDB不需要定义表结构这个特点给表结构的修改带来了极大的方便，但是也给多表查询、复杂事务等高级操作带来了阻碍。</p>
+<p>Redis会把所有数据加载到内存中的，Redis能得到远高于MongoDB这类常规数据库的读写性能。当然，Redis的功能还不止key-value存储这么简单，相较它的key-value前辈Memcached，Redis还支持数据持久化，list、set等多种数据结构，主从复制备份等一些列功能，因此Redis绝对称得上是key-value数据库中功能最全面、最简单易用的款。</p>
+<p>由于阉割掉了数据表、字段这样的重要特性，且所有的查询都依赖key，因此Redis无法提供常规数据库所具备的多列查询、区段查询等复杂查询功能。同时，由于Redis需要把数据存在内存中，这也大大限制了Redis可存储的数据量，这也决定了Redis难以用在数据规模很大的应用场景中。</p>
+<p>如果你的数据的逻辑结构非常复杂，经常需要进行复杂的多表查询或者事务操作，那显然还是MySQL这类关系型数据库更合适。</p>
+<p><a href="https://leriou.github.io/2019-01-09-mongodb-compareto-elasticsearch/" target="_blank" rel="noopener">https://leriou.github.io/2019-01-09-mongodb-compareto-elasticsearch/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">postgresql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mongodb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hbase</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tablestore</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据库引擎</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      <!--2019-05-20-->
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/29/数据库特点对比/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杭州房源分析系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/21/杭州房源分析系统/">杭州房源分析系统</a>
+    </h1>
+  
+
+
+        
+        <a href="/2019/06/21/杭州房源分析系统/" class="archive-article-date">
+  	<time datetime="2019-06-21T09:06:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="杭州房源分析"><a href="#杭州房源分析" class="headerlink" title="杭州房源分析"></a>杭州房源分析</h1><h3 id="一、项目主题"><a href="#一、项目主题" class="headerlink" title="一、项目主题"></a>一、项目主题</h3><p>分析杭州历年城区内小区房价变化，根据房地产知识定义楼盘，为用户购房提供决策参考。（可分析其他城市，替换第一个城区链接即可。）</p>
+<hr>
+<h3 id="二、项目开发"><a href="#二、项目开发" class="headerlink" title="二、项目开发"></a>二、项目开发</h3><h5 id="1-数据爬虫"><a href="#1-数据爬虫" class="headerlink" title="1.数据爬虫"></a>1.数据爬虫</h5><p>获取房天下的数据源，数据入库。</p>
+<p>指标：小区名，房价，经度，纬度，板块评级，物业评级，活跃度评级，教育评级，搜索热度。</p>
+<p>待分析出的指标：同比，环比，分类，综合评分，预测房价。</p>
+<h6 id="（1）分析网站结构"><a href="#（1）分析网站结构" class="headerlink" title="（1）分析网站结构"></a>（1）分析网站结构</h6><p>主城区链接：get请求<br>    <a href="https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=</a></p>
+<p>商业区：get请求<br>    <a href="https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=</a></p>
+<p>小区：get请求<br>    <a href="https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/map/getmapdata/hz?district=%E6%8B%B1%E5%A2%85&amp;commerce=&amp;x1=undefined&amp;y1=undefined&amp;x2=undefined&amp;y2=undefined&amp;v=20150116&amp;newcode=</a></p>
+<p>历年：get请求<br>    <a href="https://fangjia.fang.com/fangjia/common/ajaxdetailtrenddata/hz?dataType=proj&amp;projcode=2010780380&amp;year=2" target="_blank" rel="noopener">https://fangjia.fang.com/fangjia/common/ajaxdetailtrenddata/hz?dataType=proj&amp;projcode=2010780380&amp;year=2</a></p>
+<p>requests请求数据接口，selenium获取页面静态数据。</p>
+<p>树形结构嵌套请求，可以用for循环，可以用队列。</p>
+<p>执行<code>crawl_data.py</code>脚本，看着数据一条一条的录入，小有成就感。</p>
+<h5 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2.数据预处理"></a>2.数据预处理</h5><p>清洗脏数据，整理数据维度。<br>这个过程可以说是最麻烦的了，各种不确定，不规范的数据，都要在这阶段解决，处理成规范的可用的数据。</p>
+<h6 id="（1）缺省值处理"><a href="#（1）缺省值处理" class="headerlink" title="（1）缺省值处理"></a>（1）缺省值处理</h6><p>缺少的值不容易估算，删除。</p>
+<h6 id="（2）数据归一化"><a href="#（2）数据归一化" class="headerlink" title="（2）数据归一化"></a>（2）数据归一化</h6><h6 id="（3）"><a href="#（3）" class="headerlink" title="（3）"></a>（3）</h6><p>执行<code>data_analysis.py</code>脚本</p>
+<h5 id="3-数据分析"><a href="#3-数据分析" class="headerlink" title="3.数据分析"></a>3.数据分析</h5><h6 id="（1）建立指标体系"><a href="#（1）建立指标体系" class="headerlink" title="（1）建立指标体系"></a>（1）建立指标体系</h6><p>房地产指标，定义楼盘，分类。<br>环比，同比-增长，下跌</p>
+<h6 id="（2）楼盘关联指标"><a href="#（2）楼盘关联指标" class="headerlink" title="（2）楼盘关联指标"></a>（2）楼盘关联指标</h6><p>选筹，<br>返租，<br>远大大（远郊，大盘，大户型），<br>公寓，<br>商铺，<br>标杆盘，<br>别墅，</p>
+<p>中央商务区，<br>地铁投资，<br>被城市包住的郊区<br>睡城<br>城乡结合部<br>新区<br>学区房<br>笋盘</p>
+<h6 id="（3）数据可视化"><a href="#（3）数据可视化" class="headerlink" title="（3）数据可视化"></a>（3）数据可视化</h6><h5 id="4-数据预测"><a href="#4-数据预测" class="headerlink" title="4.数据预测"></a>4.数据预测</h5><h6 id="（1）模型选择"><a href="#（1）模型选择" class="headerlink" title="（1）模型选择"></a>（1）模型选择</h6><p>微观层面上可以预测，但是实际上会受政策，经济等因素的影响，所以预测仅仅是在微观层面上，即仅考虑指标和数值的维度上，提供参考。</p>
+<h6 id="（2）参数调优"><a href="#（2）参数调优" class="headerlink" title="（2）参数调优"></a>（2）参数调优</h6><h6 id="（3）输出分类结果"><a href="#（3）输出分类结果" class="headerlink" title="（3）输出分类结果"></a>（3）输出分类结果</h6><h6 id="（4）房源评估系统"><a href="#（4）房源评估系统" class="headerlink" title="（4）房源评估系统"></a>（4）房源评估系统</h6><hr>
+<h3 id="三、项目结论"><a href="#三、项目结论" class="headerlink" title="三、项目结论"></a>三、项目结论</h3><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h5><h6 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h6><h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><h6 id="（1）-1"><a href="#（1）-1" class="headerlink" title="（1）"></a>（1）</h6><h2 id="源码地址"><a href="#源码地址" class="headerlink" title="!源码地址"></a><a href="https://github.com/SuiMingYang/hz-house-price-statics" target="_blank" rel="noopener">!源码地址</a></h2><p>Author: suimingyang </p>
+<p>Email : <a href="mailto:suimingyang123@gmail.com" target="_blank" rel="noopener">suimingyang123@gmail.com</a></p>
+<p>Blog  : <a href="https://suimingyang.github.io/" target="_blank" rel="noopener">https://suimingyang.github.io/</a></p>
+<p>Github: <a href="https://github.com/SuiMingYang/" target="_blank" rel="noopener">https://github.com/SuiMingYang/</a></p>
+<hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">房地产</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      <!--2019-05-20-->
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/21/杭州房源分析系统/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SQL语句优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/10/SQL语句优化/">SQL语句优化</a>
+    </h1>
+  
+
+
+        
+        <a href="/2019/06/10/SQL语句优化/" class="archive-article-date">
+  	<time datetime="2019-06-10T10:05:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、全表扫描"><a href="#一、全表扫描" class="headerlink" title="一、全表扫描"></a>一、全表扫描</h2><p>在这些where子句中，即使某些列存在索引，但是由于编写了劣质的SQL，系统在运行该SQL语句时也不能使用该索引，而同样使用全表扫描，这就造成了响应速度的极大降低。<br>
+        
+          <a class="article-more-a" href="/2019/06/10/SQL语句优化/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql优化</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      <!--2019-05-20-->
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/10/SQL语句优化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-深度学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -186,15 +714,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pytorch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tensorflow</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pytorch</a>
         		</li>
       		
 		</ul>
@@ -291,94 +819,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/04/29/数据分析实战/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pytorch框架使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/pytorch框架使用/">pytorch框架使用</a>
-    </h1>
-  
-
-
-        
-        <a href="/2019/04/22/pytorch框架使用/" class="archive-article-date">
-  	<time datetime="2019-04-22T11:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>先上个视频占坑，莫烦大神讲的，后期补充笔记和要点。<br>
-        
-          <a class="article-more-a" href="/2019/04/22/pytorch框架使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pytorch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CNN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <!--2019-05-20-->
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/22/pytorch框架使用/">展开全文 >></a>
         </p>
       
 
@@ -753,254 +1193,6 @@
 
 
   
-    <article id="post-kaggle项目ForestCoverType" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/24/kaggle项目ForestCoverType/">kaggle项目ForestCoverType</a>
-    </h1>
-  
-
-
-        
-        <a href="/2019/02/24/kaggle项目ForestCoverType/" class="archive-article-date">
-  	<time datetime="2019-02-24T04:41:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>Random forests? Cover trees? Not so fast, computer nerds. We’re talking about the real thing.<br>
-        
-          <a class="article-more-a" href="/2019/02/24/kaggle项目ForestCoverType/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kaggle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分类问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <!--2019-05-20-->
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/24/kaggle项目ForestCoverType/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shell脚本语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/shell脚本语法/">shell脚本语法</a>
-    </h1>
-  
-
-
-        
-        <a href="/2019/01/18/shell脚本语法/" class="archive-article-date">
-  	<time datetime="2019-01-18T03:00:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>echo &quot;Hello World !&quot;</code> #输出脚本<br>
-        
-          <a class="article-more-a" href="/2019/01/18/shell脚本语法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <!--2019-05-20-->
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/18/shell脚本语法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-增长黑客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/25/增长黑客/">增长黑客</a>
-    </h1>
-  
-
-
-        
-        <a href="/2018/12/25/增长黑客/" class="archive-article-date">
-  	<time datetime="2018-12-25T10:05:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="增长黑客的理解"><a href="#增长黑客的理解" class="headerlink" title="增长黑客的理解"></a>增长黑客的理解</h2>
-        
-          <a class="article-more-a" href="/2018/12/25/增长黑客/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">增长黑客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运营</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <!--2019-05-20-->
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/25/增长黑客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1102,6 +1294,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">sql优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">leecode</a>
               </li>
              
@@ -1114,18 +1326,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">预测问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
@@ -1135,6 +1335,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">级联分类器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1158,27 +1366,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">位运算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1190,11 +1382,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GitKraKen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">surprise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1206,11 +1414,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">surprise</a>
+                <a href="javascript:void(0)" class="js-tag color4">房地产</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,11 +1430,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">postgresql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tablestore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库引擎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tensorflow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
