@@ -169,428 +169,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><pre><code>class Stack(object):
-    &quot;&quot;&quot;栈&quot;&quot;&quot;
-    def __init__(self):
-        self.items = []
-
-    def is_empty(self):
-        &quot;&quot;&quot;是否为空&quot;&quot;&quot;
-        return self.items == []
-
-    def push(self, item):
-        &quot;&quot;&quot;加入元素&quot;&quot;&quot;
-        self.items.append(item)
-
-    def pop(self):
-        &quot;&quot;&quot;移除元素&quot;&quot;&quot;
-        return self.items.pop()
-
-    def peek(self):
-        &quot;&quot;&quot;栈顶元素&quot;&quot;&quot;
-        return self.items[len(self.items)-1]
-
-    def size(self):
-        &quot;&quot;&quot;栈的元素数&quot;&quot;&quot;
-        return len(self.items)
-
-if __name__ == &quot;__main__&quot;:
-    stack = Stack()
-    stack.push(&quot;A&quot;)
-    stack.push(&quot;B&quot;)
-    stack.push(&quot;C&quot;)
-    print(stack.size())
-    print(stack.peek())
-    print(stack.pop())
-    print(stack.pop())
-    print(stack.pop())
-</code></pre><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><pre><code>class Queue(object):
-    &quot;&quot;&quot;队列&quot;&quot;&quot;
-    def __init__(self):
-        self.items = []
-
-    def is_empty(self):
-        return self.items == []
-
-    def enqueue(self, item):
-        &quot;&quot;&quot;进队列&quot;&quot;&quot;
-        self.items.insert(0,item)
-
-    def dequeue(self):
-        &quot;&quot;&quot;出队列&quot;&quot;&quot;
-        return self.items.pop()
-
-    def size(self):
-        &quot;&quot;&quot;队列元素数&quot;&quot;&quot;
-        return len(self.items)
-
-if __name__ == &quot;__main__&quot;:
-    q = Queue()
-    q.enqueue(&quot;A&quot;)
-    q.enqueue(&quot;B&quot;)
-    q.enqueue(&quot;C&quot;)
-    print(q.size())
-    print(q.dequeue())
-    print(q.dequeue())
-    print(q.dequeue())
-</code></pre><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><pre><code>class Node(object):
-    &quot;&quot;&quot;
-    节点类
-    &quot;&quot;&quot;
-    def __init__(self, value):
-        self.pre = None
-        self.value = value
-        self.next = None
-
-class DoublyLinkedList(object):
-    &quot;&quot;&quot;
-    双向链表类
-    &quot;&quot;&quot;
-    def __init__(self):
-        &quot;&quot;&quot;
-        初始化链表
-        &quot;&quot;&quot;
-        head = Node(None)
-        tail = Node(None)
-        self.head = head
-        self.tail = tail
-        self.head.next = self.tail
-        self.tail.pre = self.head
-
-    @property
-    def length(self):
-        &quot;&quot;&quot;
-        获取链表长度
-        :return:
-        &quot;&quot;&quot;
-        length = 0
-        node = self.head
-        while node.next != self.tail:
-            length += 1
-            node = node.next
-        return length
-
-    def print(self):
-        &quot;&quot;&quot;
-        打印
-        :return:
-        &quot;&quot;&quot;
-        if self.length == 0:
-            print(&apos;Nothing&apos;)
-        else:
-            node = self.head.next
-            print(&apos;[&apos;, end=&apos;&apos;)
-            while node.next != self.tail:
-                print(node.value, &apos;, &apos;, end=&apos;&apos;)
-                node = node.next
-            print(&apos;%s]&apos; % node.value)
-
-    def append(self, value):
-        &quot;&quot;&quot;
-        表尾添加节点
-        :return:
-        &quot;&quot;&quot;
-        node = Node(value)
-        pre = self.tail.pre
-        # 两点之间进行双双链接
-        pre.next = node
-        node.pre = pre
-        node.next = self.tail
-        self.tail.pre = node
-        return node
-
-    def get(self, index):
-        &quot;&quot;&quot;
-        获取节点
-        :param index:
-        :return:
-        &quot;&quot;&quot;
-        if index &lt; 0 or index &gt; self.length:
-            print(&apos;Index错误，索引越界&apos;)
-            return None
-        else:
-            node = self.head.next
-            while index:
-                node = node.next
-                index -= 1
-            return node
-
-    def insert(self, index, value):
-        &quot;&quot;&quot;
-        插入
-        :param index:
-        :param value:
-        :return:
-        &quot;&quot;&quot;
-        if index &lt; 0 or index &gt; self.length:
-            print(&apos;Index 错误, 索引越界&apos;)
-        next_node = self.get(index)
-        # 开始插入
-        node = Node(value)
-        pre_node = next_node.pre
-
-        pre_node.next = node
-        node.pre = pre_node
-        node.next = next_node
-        next_node.pre = node
-        return node
-
-    def delete(self, index):
-        &quot;&quot;&quot;
-        删除节点
-        :param index:
-        :return:
-        &quot;&quot;&quot;
-        node = self.get(index)
-        if node:
-            node.pre.next = node.next
-            node.next.pre = node.pre
-            return True
-        else:
-            return False
-
-    def reverse(self):
-        &quot;&quot;&quot;
-        反转链表
-        :return:
-        1.node.next --&gt; node.pre
-        node.pre --&gt; node.next
-        2.head.next --&gt; None
-        tail.pre --&gt; None
-        3.head--&gt;tail
-        tail--&gt;head
-        &quot;&quot;&quot;
-        pre_head = self.head
-        tail = self.tail
-
-        # 调用递归，对每个节点进行交换位置
-        def reverse(pre_node, node):
-            if node:
-                next_node = node.next
-                node.next = pre_node
-                pre_node.pre = node
-
-                if pre_node is self.head:
-                    pre_node.next = None
-                if node is self.tail:
-                    node.pre = None
-                return reverse(node, next_node)
-
-            else:
-                self.head = tail
-                self.tail = pre_head
-        return reverse(self.head, self.head.next)
-
-    def clear(self):
-        &quot;&quot;&quot;
-        清空链表
-        :return:
-        &quot;&quot;&quot;
-        self.head.next = self.tail
-        self.tail.pre = self.head
-
-
-
-
-if __name__ == &apos;__main__&apos;:
-    l = DoublyLinkedList()
-
-    # 测试在表尾添加节点
-    l.append(3)
-    l.append(4)
-    l.append(5)
-    l.print()
-
-    # 测试get
-    i = 0
-    print(&apos;第&apos;, i, &apos;个元素为: &apos;, l.get(i).value)
-
-    # 测试索引插入
-    print(&apos;索引插入...&apos;)
-    l.insert(1, 7)
-    l.insert(0, 8)
-    l.print()
-
-    # 测试删除节点
-    print(&apos;删除节点...&apos;)
-    l.delete(0)
-    l.delete(3)
-    l.print()
-
-    # 测试反转
-    print(&apos;反转...&apos;)
-    l.reverse()
-    l.print()
-
-    # 测试清空
-    print(&apos;清空...&apos;)
-    l.clear()
-    l.print()
-
-    # 测试长度
-    print(&apos;链表长度为: &apos;, l.length)
-</code></pre><h3 id="双向队列"><a href="#双向队列" class="headerlink" title="双向队列"></a>双向队列</h3><pre><code>class Deque(object):
-    &quot;&quot;&quot;双端队列&quot;&quot;&quot;
-    def __init__(self):
-        self.items = []
-
-    def is_empty(self):
-        &quot;&quot;&quot;判断队列是否为空&quot;&quot;&quot;
-        return self.items == []
-
-    def add_front(self, item):
-        &quot;&quot;&quot;在队头添加元素&quot;&quot;&quot;
-        self.items.insert(0,item)
-
-    def add_rear(self, item):
-        &quot;&quot;&quot;在队尾添加元素&quot;&quot;&quot;
-        self.items.append(item)
-
-    def remove_front(self):
-        &quot;&quot;&quot;从队头删除元素&quot;&quot;&quot;
-        return self.items.pop(0)
-
-    def remove_rear(self):
-        &quot;&quot;&quot;从队尾删除元素&quot;&quot;&quot;
-        return self.items.pop()
-
-    def size(self):
-        &quot;&quot;&quot;返回队列大小&quot;&quot;&quot;
-        return len(self.items)
-
-
-if __name__ == &quot;__main__&quot;:
-    deque = Deque()
-    deque.add_front(1)
-    deque.add_front(2)
-    deque.add_rear(3)
-    deque.add_rear(4)
-    print(deque.size())
-    print(deque.remove_front())
-    print(deque.remove_front())
-    print(deque.remove_rear())
-    print(deque.remove_rear())
-</code></pre><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><pre><code>class Node:
-    def __init__(self,root=&quot;NIL&quot;,left=None,right=None):
-        self.root = root
-        self.left = left
-        self.right = right
-        self.out_list_temp = []
-
-class Tree(Node):
-    def build(self,node_list):
-        root = node_list.pop(0)
-        if root == &quot;NIL&quot;:
-            tree = None
-        else:
-            tree = Tree(root)
-            tree.left = self.build(node_list)
-            tree.right = self.build(node_list)
-        return tree
-
-    def preorder_traversal(self,tree):
-        if (tree.root != None):
-            self.out_list_temp.append(tree.root)
-        if tree.left != None:
-            self.preorder_traversal(tree.left)
-        if tree.right != None:
-            self.preorder_traversal(tree.right)
-        return self.out_list_temp
-
-    def preorder_traversal_print(self,tree):
-        print(self.preorder_traversal(tree))
-        self.out_list_temp = []
-
-    def inorder_traversal(self,tree):
-        if tree.left != None:
-            self.inorder_traversal(tree.left)
-        if (tree.root != None):
-            self.out_list_temp.append(tree.root)
-        if tree.right != None:
-            self.inorder_traversal(tree.right)
-        return self.out_list_temp
-
-    def inorder_traversal_print(self,tree):
-        print(self.inorder_traversal(tree))
-        self.out_list_temp = []
-
-    def postorder_traversal(self,tree):
-        if tree.left != None:
-            self.postorder_traversal(tree.left)
-        if tree.right != None:
-            self.postorder_traversal(tree.right)
-        if (tree.root != None):
-            self.out_list_temp.append(tree.root)
-        return self.out_list_temp
-
-    def postorder_traversal_print(self,tree):
-        print(self.postorder_traversal(tree))
-        self.out_list_temp = []
-
-if __name__ == &apos;__main__&apos;:
-    node_list = [1,4,2,&apos;NIL&apos;,&apos;NIL&apos;,5,&apos;NIL&apos;,&apos;NIL&apos;,3,&apos;NIL&apos;,6,7,&apos;NIL&apos;,&apos;NIL&apos;,&apos;NIL&apos;]
-    tree = Tree()
-    my_tree = tree.build(node_list)
-    tree.preorder_traversal_print(my_tree)
-    tree.inorder_traversal_print(my_tree)
-    tree.postorder_traversal_print(my_tree)
-</code></pre><h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><pre><code>class Graph(object):
-    def __init__(self,graph):
-        self.graph=graph
-
-    def find_path(self, start, end, path=[]):
-        path = path + [start]
-        if start == end:
-            return path
-        if not self.graph.__contains__(start):
-            return None
-        for node in graph[start]:
-            if node not in path:
-                newpath = self.find_path(node, end, path)
-                if newpath: return newpath
-        return None
-
-    def find_all_paths(self,start, end, path=[]):
-        path = path + [start]
-        if start == end:
-            return [path]
-        if not self.graph.__contains__(start):
-            return []
-        paths = []
-        for node in self.graph[start]:
-            if node not in path:
-                newpaths = self.find_all_paths(node, end, path)
-                for newpath in newpaths:
-                    paths.append(newpath)
-        return paths
-
-    def find_shortest_path(self, start, end, path=[]):
-        path = path + [start]
-        if start == end:
-            return path
-        if not self.graph.__contains__(start):
-            return None
-        shortest = None
-        for node in self.graph[start]:
-            if node not in path:
-                newpath = self.find_shortest_path(node, end, path)
-                if newpath:
-                    if not shortest or len(newpath) &lt; len(shortest):
-                        shortest = newpath
-        return shortest
-
-if __name__ == &quot;__main__&quot;:
-    graph = {&apos;A&apos;: [&apos;B&apos;, &apos;C&apos;],
-            &apos;B&apos;: [&apos;C&apos;, &apos;D&apos;],
-            &apos;C&apos;: [&apos;D&apos;],
-            &apos;D&apos;: [&apos;C&apos;,&apos;F&apos;],
-            &apos;E&apos;: [&apos;F&apos;],
-            &apos;F&apos;: [&apos;C&apos;]}
-    obj=Graph(graph)
-    #print(obj.find_all_paths(&apos;A&apos;,&apos;C&apos;))
-    #print(obj.find_all_paths(&apos;A&apos;,&apos;A&apos;))
-    print(obj.find_all_paths(&apos;B&apos;,&apos;A&apos;))
-</code></pre>
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1>
         
           <a class="article-more-a" href="/2019/07/15/数据结构和算法/#more">more >></a>
         
@@ -1044,11 +623,11 @@ if __name__ == &quot;__main__&quot;:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1571,11 +1150,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1588,14 +1175,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1615,11 +1194,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1631,6 +1210,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nlp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jieba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -1639,11 +1226,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nlp</a>
+                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jieba</a>
+                <a href="javascript:void(0)" class="js-tag color3">运营</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1663,14 +1250,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运营</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据预处理</a>
               </li>
              
@@ -1687,6 +1266,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">消费</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
               </li>
              
@@ -1696,14 +1283,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">消费</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
               </li>
              
               <li class="article-tag-list-item">
