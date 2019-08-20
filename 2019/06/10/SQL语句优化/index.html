@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="James Sui的博客">
 <meta property="og:description" content="一、全表扫描在这些where子句中，即使某些列存在索引，但是由于编写了劣质的SQL，系统在运行该SQL语句时也不能使用该索引，而同样使用全表扫描，这就造成了响应速度的极大降低。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T10:49:53.036Z">
+<meta property="og:updated_time" content="2019-08-15T10:15:22.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL语句优化">
 <meta name="twitter:description" content="一、全表扫描在这些where子句中，即使某些列存在索引，但是由于编写了劣质的SQL，系统在运行该SQL语句时也不能使用该索引，而同样使用全表扫描，这就造成了响应速度的极大降低。">
@@ -180,6 +180,21 @@
 <p>(二) 使用EXPLAIN关键字检测查询<br>使用EXPLAIN关键字可以使我们知道MySQL是如何处理SQL语句的，这样可以帮助我们分析我们的查询语句或是表结构的性能瓶颈；EXPLAIN的查询结果还会告诉我们索引主键是如何被利用的，数据表是如何被被搜索或排序的。</p>
 <p>(三)当只要一行数据时使用LIMIT 1</p>
 <p>(四)为搜索字段建立索引<br>普通索引INDEX：适用于name、email等一般属性<br>唯一索引UNIQUE：与普通索引类似，不同的是唯一索引要求索引字段值在表中是唯一的，这一点和主键索引类似，但是不同的是，唯一索引允许有空值。唯一索引一般适用于身份证号码、用户账号等不允许有重复的属性字段上。<br>主键索引：其实就是主键，一般在建表时就指定了，不需要额外添加。<br>全文检索：只适用于VARCHAR和Text类型的字段。<br>注意：全文索引和普通索引是有很大区别的，如果建立的是普通索引，一般会使用like进行模糊查询，只会对查询内容前一部分有效，即只对前面不使用通配符的查询有效，如果前后都有通配符，普通索引将不会起作用。对于全文索引而言在查询时有自己独特的匹配方式，例如我们在对一篇文章的标题和内容进行全文索引时：<br>ALTER TABLE article ADD FULLTEXT (‘title’, ‘content’); 在进行检索时就需要使用如下的语法进行检索：<br>SELECT * FROM article WHERE MATCH(‘title’, ‘content’) AGAINST (‘查询字符串’);<br>在使用全文检索时的注意事项：<br>MySql自带的全文索引只能用于数据库引擎为MYISAM的数据表，如果是其他数据引擎，则全文索引不会生效。此外，MySql自带的全文索引只能对英文进行全文检索，目前无法对中文进行全文检索。如果需要对包含中文在内的文本数据进行全文检索，我们需要采用Sphinx（斯芬克斯）/Coreseek技术来处理中文。另外使用MySql自带的全文索引时，如果查询字符串的长度过短将无法得到期望的搜索结果。MySql全文索引所能找到的词默认最小长度为4个字符。另外，如果查询的字符串包含停止词，那么该停止词将会被忽略。</p>
+<h2 id="二、搜索引擎的选择"><a href="#二、搜索引擎的选择" class="headerlink" title="二、搜索引擎的选择"></a>二、搜索引擎的选择</h2><h3 id="innerdb-事务优先，适用于多并发（行锁）"><a href="#innerdb-事务优先，适用于多并发（行锁）" class="headerlink" title="innerdb 事务优先，适用于多并发（行锁）"></a>innerdb 事务优先，适用于多并发（行锁）</h3><h3 id="myisam-性能优先（表锁）"><a href="#myisam-性能优先（表锁）" class="headerlink" title="myisam 性能优先（表锁）"></a>myisam 性能优先（表锁）</h3><p>解析过程：from,on,join,where,group by,having,select,order by,limit</p>
+<p>dml需要commit<br>ddl表级操作自动提交</p>
+<p>type类型：system，const，eq_ref，ref，range，index，all</p>
+<p>using filesort 额外的一次排序或查询,orderby常见,where和orderby涉及字段都要看。<br>using temporary 生成临时表，groupby常见</p>
+<p>索引覆盖：查询数据全在索引中，不会回表查询<br>复合索引跨列引发回表查询。</p>
+<p>小表驱动大表，</p>
+<p>索引失效：</p>
+<ol>
+<li>复合索引没有全用</li>
+<li>不要在索引列做计算操作</li>
+<li>不使用&lt;&gt;,!=,is null,is not null,or</li>
+<li>like不要以%开头</li>
+<li>类型转换</li>
+</ol>
+<p>主查询数量大用in<br>子查询数数量大用exist</p>
 
       
 
@@ -495,11 +510,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,19 +526,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分类问题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">级联分类器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,6 +542,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">tableau</a>
               </li>
              
@@ -551,11 +558,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color2">opencv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">级联分类器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,10 +579,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,15 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
+                <a href="javascript:void(0)" class="js-tag color5">协同推荐</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运营</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">房地产</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户画像</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,6 +626,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">增长黑客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运营</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">房地产</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">消费</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">美团</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">解决方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">深度学习</a>
               </li>
              
@@ -635,19 +674,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">社群</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">消费</a>
+                <a href="javascript:void(0)" class="js-tag color1">sql优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户画像</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
