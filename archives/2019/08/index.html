@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kaggle项目:leaf-classification | James Sui的博客</title>
+  <title>Archives: 2019/8 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="kaggle上的一个经典分类项目">
-<meta name="keywords" content="kaggle,分类问题">
-<meta property="og:type" content="article">
-<meta property="og:title" content="kaggle项目:leaf-classification">
-<meta property="og:url" content="http://yoursite.com/2018/08/24/kaggle项目leaf-classification/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="James Sui的博客">
+<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="kaggle上的一个经典分类项目">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-13T12:25:56.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kaggle项目:leaf-classification">
-<meta name="twitter:description" content="kaggle上的一个经典分类项目">
+<meta name="twitter:title" content="James Sui的博客">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -151,239 +146,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-kaggle项目leaf-classification" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      kaggle项目:leaf-classification
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/27/房地产数据分析/" class="archive-article-date">
+  	<time datetime="2019-08-27T06:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/27/房地产数据分析/">房地产数据分析</a>
     </h1>
   
 
 
-        
-        <a href="/2018/08/24/kaggle项目leaf-classification/" class="archive-article-date">
-  	<time datetime="2018-08-24T12:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>kaggle上的一个经典分类项目<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">def warn(*args, **kwargs): pass</span><br><span class="line">import warnings</span><br><span class="line">warnings.warn = warn</span><br><span class="line"></span><br><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">from sklearn.cross_validation import StratifiedShuffleSplit</span><br><span class="line">#from sklearn.model_selection import StratifiedShuffleSplit</span><br><span class="line">train = pd.read_csv(&apos;train.csv&apos;)</span><br><span class="line">test = pd.read_csv(&apos;test.csv&apos;)</span><br><span class="line"></span><br><span class="line">def encode(train, test):</span><br><span class="line">    le = LabelEncoder().fit(train.species) </span><br><span class="line">    labels = le.transform(train.species)           # encode species strings</span><br><span class="line">    classes = list(le.classes_)                    # save column names for submission</span><br><span class="line">    test_ids = test.id                             # save test ids for submission</span><br><span class="line">    </span><br><span class="line">    train = train.drop([&apos;species&apos;, &apos;id&apos;], axis=1)  </span><br><span class="line">    test = test.drop([&apos;id&apos;], axis=1)</span><br><span class="line">    </span><br><span class="line">    return train, labels, test, test_ids, classes</span><br><span class="line"></span><br><span class="line">train, labels, test, test_ids, classes = encode(train, test)</span><br><span class="line">train.head(1)</span><br><span class="line"></span><br><span class="line">sss = StratifiedShuffleSplit(labels, 10, test_size=0.2, random_state=23)</span><br><span class="line"></span><br><span class="line">for train_index, test_index in sss:</span><br><span class="line">    X_train, X_test = train.values[train_index], train.values[test_index]</span><br><span class="line">    y_train, y_test = labels[train_index], labels[test_index]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from sklearn.metrics import accuracy_score, log_loss</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">from sklearn.svm import SVC, LinearSVC, NuSVC</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier</span><br><span class="line">from sklearn.naive_bayes import GaussianNB</span><br><span class="line">from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span><br><span class="line">from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span><br><span class="line"></span><br><span class="line">classifiers = [</span><br><span class="line">    KNeighborsClassifier(3),</span><br><span class="line">    SVC(kernel=&quot;rbf&quot;, C=0.025, probability=True),</span><br><span class="line">    NuSVC(probability=True),</span><br><span class="line">    DecisionTreeClassifier(),</span><br><span class="line">    RandomForestClassifier(),</span><br><span class="line">    AdaBoostClassifier(),</span><br><span class="line">    GradientBoostingClassifier(),</span><br><span class="line">    GaussianNB(),</span><br><span class="line">    LinearDiscriminantAnalysis(),</span><br><span class="line">    QuadraticDiscriminantAnalysis()]</span><br><span class="line"></span><br><span class="line"># Logging for Visual Comparison</span><br><span class="line">log_cols=[&quot;Classifier&quot;, &quot;Accuracy&quot;, &quot;Log Loss&quot;]</span><br><span class="line">log = pd.DataFrame(columns=log_cols)</span><br><span class="line"></span><br><span class="line">for clf in classifiers:</span><br><span class="line">    clf.fit(X_train, y_train)</span><br><span class="line">    name = clf.__class__.__name__</span><br><span class="line">    </span><br><span class="line">    print(&quot;=&quot;*30)</span><br><span class="line">    print(name)</span><br><span class="line">    </span><br><span class="line">    print(&apos;****Results****&apos;)</span><br><span class="line">    train_predictions = clf.predict(X_test)</span><br><span class="line">    acc = accuracy_score(y_test, train_predictions)</span><br><span class="line">    print(&quot;Accuracy: &#123;:.4%&#125;&quot;.format(acc))</span><br><span class="line">    </span><br><span class="line">    train_predictions = clf.predict_proba(X_test)</span><br><span class="line">    ll = log_loss(y_test, train_predictions)</span><br><span class="line">    print(&quot;Log Loss: &#123;&#125;&quot;.format(ll))</span><br><span class="line">    </span><br><span class="line">    log_entry = pd.DataFrame([[name, acc*100, ll]], columns=log_cols)</span><br><span class="line">    log = log.append(log_entry)</span><br><span class="line">    </span><br><span class="line">print(&quot;=&quot;*30)</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;Accuracy&apos;, y=&apos;Classifier&apos;, data=log, color=&quot;b&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Accuracy %&apos;)</span><br><span class="line">plt.title(&apos;Classifier Accuracy&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;Log Loss&apos;, y=&apos;Classifier&apos;, data=log, color=&quot;g&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Log Loss&apos;)</span><br><span class="line">plt.title(&apos;Classifier Log Loss&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># Predict Test Set</span><br><span class="line">favorite_clf = LinearDiscriminantAnalysis()</span><br><span class="line">favorite_clf.fit(X_train, y_train)</span><br><span class="line">test_predictions = favorite_clf.predict_proba(test)</span><br><span class="line"></span><br><span class="line"># Format DataFrame</span><br><span class="line">submission = pd.DataFrame(test_predictions, columns=classes)</span><br><span class="line">submission.insert(0, &apos;id&apos;, test_ids)</span><br><span class="line">submission.reset_index()</span><br><span class="line"></span><br><span class="line"># Export Submission</span><br><span class="line">submission.to_csv(&apos;submission.csv&apos;, index = False)</span><br><span class="line">submission.tail()</span><br></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢您的支持，加个好友吧<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/smy/smy_wx.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kaggle</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分类问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">房地产</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      <!--2019-05-20-->
-      
-        <span class="archive-article-date">
-            阅读量 <span id="busuanzi_value_page_pv"></span>
-        </span>
-      
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/24/kaggle项目leaf-classification/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/08/25/使用GitKraKen可视化工具管理git源码/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          使用GitKraKen可视化工具管理git源码
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/08/19/使用skicit-learn做数据分析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用scikit-learn做数据分析</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://yoursite.com/2018/08/24/kaggle项目leaf-classification/", 
-    sourceId: "kaggle项目leaf-classification",
-    productKey: "true",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
-    <section id="comments">
-      <div id="disqus_thread"></div>
-        <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'true'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </section>
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<!--
-<script src="//suimingyang.github.io/gitment.js"></script>
--->
-<script src="//www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yoursite.com/2018/08/24/kaggle项目leaf-classification/",
-  owner: 'suimingyang',
-  repo: 'suimingyang.github.io',
-  oauth: {
-    client_id: '6b9ddae07c444fb474c4',
-    client_secret: '579a8a0f92201c5797ab6459d1f29ccb756aad60',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -418,8 +239,8 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

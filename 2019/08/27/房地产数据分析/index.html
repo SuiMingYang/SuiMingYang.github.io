@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kaggle项目:leaf-classification | James Sui的博客</title>
+  <title>房地产数据分析 | James Sui的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="kaggle上的一个经典分类项目">
-<meta name="keywords" content="kaggle,分类问题">
+  <meta name="description" content="一、体系搭建  房地产知识解码区域  找地，判地 问题拆解 信息的完整性的意义：宏观微观。 土地价值： 土地价格： 区域研究：分区，分版块（街道，小区）。区域类型（住宅，商务，开发），拿地面积，客户画像（来源，习惯，成分，人群），生态圈整理，周边配套分级。辐射栅格范围 市场数据：二手交易， 客户：既有客户判断，来源，潜在客户判断，挂牌和成交。 标签：投资核心地区（城市价值大，上涨空间大），投资重点">
+<meta name="keywords" content="数据分析,房地产">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kaggle项目:leaf-classification">
-<meta property="og:url" content="http://yoursite.com/2018/08/24/kaggle项目leaf-classification/index.html">
+<meta property="og:title" content="房地产数据分析">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/房地产数据分析/index.html">
 <meta property="og:site_name" content="James Sui的博客">
-<meta property="og:description" content="kaggle上的一个经典分类项目">
+<meta property="og:description" content="一、体系搭建  房地产知识解码区域  找地，判地 问题拆解 信息的完整性的意义：宏观微观。 土地价值： 土地价格： 区域研究：分区，分版块（街道，小区）。区域类型（住宅，商务，开发），拿地面积，客户画像（来源，习惯，成分，人群），生态圈整理，周边配套分级。辐射栅格范围 市场数据：二手交易， 客户：既有客户判断，来源，潜在客户判断，挂牌和成交。 标签：投资核心地区（城市价值大，上涨空间大），投资重点">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-13T12:25:56.431Z">
+<meta property="og:image" content="https://SuiMingYang.github.io/img/realestate/frame.png">
+<meta property="og:image" content="https://SuiMingYang.github.io/img/realestate/指标因子.png">
+<meta property="og:updated_time" content="2019-08-28T02:24:37.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kaggle项目:leaf-classification">
-<meta name="twitter:description" content="kaggle上的一个经典分类项目">
+<meta name="twitter:title" content="房地产数据分析">
+<meta name="twitter:description" content="一、体系搭建  房地产知识解码区域  找地，判地 问题拆解 信息的完整性的意义：宏观微观。 土地价值： 土地价格： 区域研究：分区，分版块（街道，小区）。区域类型（住宅，商务，开发），拿地面积，客户画像（来源，习惯，成分，人群），生态圈整理，周边配套分级。辐射栅格范围 市场数据：二手交易， 客户：既有客户判断，来源，潜在客户判断，挂牌和成交。 标签：投资核心地区（城市价值大，上涨空间大），投资重点">
+<meta name="twitter:image" content="https://SuiMingYang.github.io/img/realestate/frame.png">
   
     <link rel="alternative" href="/atom.xml" title="James Sui的博客" type="application/atom+xml">
   
@@ -151,29 +154,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-kaggle项目leaf-classification" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-房地产数据分析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      kaggle项目:leaf-classification
+      房地产数据分析
     </h1>
   
 
 
         
-        <a href="/2018/08/24/kaggle项目leaf-classification/" class="archive-article-date">
-  	<time datetime="2018-08-24T12:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
+        <a href="/2019/08/27/房地产数据分析/" class="archive-article-date">
+  	<time datetime="2019-08-27T06:23:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>kaggle上的一个经典分类项目<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">def warn(*args, **kwargs): pass</span><br><span class="line">import warnings</span><br><span class="line">warnings.warn = warn</span><br><span class="line"></span><br><span class="line">from sklearn.preprocessing import LabelEncoder</span><br><span class="line">from sklearn.cross_validation import StratifiedShuffleSplit</span><br><span class="line">#from sklearn.model_selection import StratifiedShuffleSplit</span><br><span class="line">train = pd.read_csv(&apos;train.csv&apos;)</span><br><span class="line">test = pd.read_csv(&apos;test.csv&apos;)</span><br><span class="line"></span><br><span class="line">def encode(train, test):</span><br><span class="line">    le = LabelEncoder().fit(train.species) </span><br><span class="line">    labels = le.transform(train.species)           # encode species strings</span><br><span class="line">    classes = list(le.classes_)                    # save column names for submission</span><br><span class="line">    test_ids = test.id                             # save test ids for submission</span><br><span class="line">    </span><br><span class="line">    train = train.drop([&apos;species&apos;, &apos;id&apos;], axis=1)  </span><br><span class="line">    test = test.drop([&apos;id&apos;], axis=1)</span><br><span class="line">    </span><br><span class="line">    return train, labels, test, test_ids, classes</span><br><span class="line"></span><br><span class="line">train, labels, test, test_ids, classes = encode(train, test)</span><br><span class="line">train.head(1)</span><br><span class="line"></span><br><span class="line">sss = StratifiedShuffleSplit(labels, 10, test_size=0.2, random_state=23)</span><br><span class="line"></span><br><span class="line">for train_index, test_index in sss:</span><br><span class="line">    X_train, X_test = train.values[train_index], train.values[test_index]</span><br><span class="line">    y_train, y_test = labels[train_index], labels[test_index]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from sklearn.metrics import accuracy_score, log_loss</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">from sklearn.svm import SVC, LinearSVC, NuSVC</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier</span><br><span class="line">from sklearn.naive_bayes import GaussianNB</span><br><span class="line">from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span><br><span class="line">from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis</span><br><span class="line"></span><br><span class="line">classifiers = [</span><br><span class="line">    KNeighborsClassifier(3),</span><br><span class="line">    SVC(kernel=&quot;rbf&quot;, C=0.025, probability=True),</span><br><span class="line">    NuSVC(probability=True),</span><br><span class="line">    DecisionTreeClassifier(),</span><br><span class="line">    RandomForestClassifier(),</span><br><span class="line">    AdaBoostClassifier(),</span><br><span class="line">    GradientBoostingClassifier(),</span><br><span class="line">    GaussianNB(),</span><br><span class="line">    LinearDiscriminantAnalysis(),</span><br><span class="line">    QuadraticDiscriminantAnalysis()]</span><br><span class="line"></span><br><span class="line"># Logging for Visual Comparison</span><br><span class="line">log_cols=[&quot;Classifier&quot;, &quot;Accuracy&quot;, &quot;Log Loss&quot;]</span><br><span class="line">log = pd.DataFrame(columns=log_cols)</span><br><span class="line"></span><br><span class="line">for clf in classifiers:</span><br><span class="line">    clf.fit(X_train, y_train)</span><br><span class="line">    name = clf.__class__.__name__</span><br><span class="line">    </span><br><span class="line">    print(&quot;=&quot;*30)</span><br><span class="line">    print(name)</span><br><span class="line">    </span><br><span class="line">    print(&apos;****Results****&apos;)</span><br><span class="line">    train_predictions = clf.predict(X_test)</span><br><span class="line">    acc = accuracy_score(y_test, train_predictions)</span><br><span class="line">    print(&quot;Accuracy: &#123;:.4%&#125;&quot;.format(acc))</span><br><span class="line">    </span><br><span class="line">    train_predictions = clf.predict_proba(X_test)</span><br><span class="line">    ll = log_loss(y_test, train_predictions)</span><br><span class="line">    print(&quot;Log Loss: &#123;&#125;&quot;.format(ll))</span><br><span class="line">    </span><br><span class="line">    log_entry = pd.DataFrame([[name, acc*100, ll]], columns=log_cols)</span><br><span class="line">    log = log.append(log_entry)</span><br><span class="line">    </span><br><span class="line">print(&quot;=&quot;*30)</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;Accuracy&apos;, y=&apos;Classifier&apos;, data=log, color=&quot;b&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Accuracy %&apos;)</span><br><span class="line">plt.title(&apos;Classifier Accuracy&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">sns.set_color_codes(&quot;muted&quot;)</span><br><span class="line">sns.barplot(x=&apos;Log Loss&apos;, y=&apos;Classifier&apos;, data=log, color=&quot;g&quot;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&apos;Log Loss&apos;)</span><br><span class="line">plt.title(&apos;Classifier Log Loss&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># Predict Test Set</span><br><span class="line">favorite_clf = LinearDiscriminantAnalysis()</span><br><span class="line">favorite_clf.fit(X_train, y_train)</span><br><span class="line">test_predictions = favorite_clf.predict_proba(test)</span><br><span class="line"></span><br><span class="line"># Format DataFrame</span><br><span class="line">submission = pd.DataFrame(test_predictions, columns=classes)</span><br><span class="line">submission.insert(0, &apos;id&apos;, test_ids)</span><br><span class="line">submission.reset_index()</span><br><span class="line"></span><br><span class="line"># Export Submission</span><br><span class="line">submission.to_csv(&apos;submission.csv&apos;, index = False)</span><br><span class="line">submission.tail()</span><br></pre></td></tr></table></figure>
+        <p>一、体系搭建</p>
+<ol>
+<li>房地产知识<h3 id="解码区域"><a href="#解码区域" class="headerlink" title="解码区域"></a>解码区域</h3><img src="https://SuiMingYang.github.io/img/realestate/frame.png" alt="完整项目逻辑图"></li>
+</ol>
+<p>找地，判地</p>
+<p>问题拆解</p>
+<p>信息的完整性的意义：宏观微观。</p>
+<p>土地价值：</p>
+<p>土地价格：</p>
+<p>区域研究：分区，分版块（街道，小区）。区域类型（住宅，商务，开发），拿地面积，客户画像（来源，习惯，成分，人群），生态圈整理，周边配套分级。辐射栅格范围</p>
+<p>市场数据：二手交易，</p>
+<p>客户：既有客户判断，来源，潜在客户判断，挂牌和成交。</p>
+<p>标签：投资核心地区（城市价值大，上涨空间大），投资重点地区（城市价值大，空间小），投资机会地区（城市价值大，房价速度快），投资潜力地区</p>
+<p>北极星指标：存销比，供求量，价格波动，异动点。<br>定性结论，定量结论</p>
+<p>有人口才有需求，</p>
+<p>房价定价因子指标：<br><img src="https://SuiMingYang.github.io/img/realestate/指标因子.png" alt="定价"></p>
+<p>使用场景：商业选址，区域投资，房价预估</p>
+<ol>
+<li>a</li>
+<li></li>
+</ol>
+<p><a href="https://www.bilibili.com/video/av65459221" target="_blank" rel="noopener">视频链接</a></p>
+
       
 
       
@@ -213,11 +237,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kaggle</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分类问题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">房地产</a>
         		</li>
       		
 		</ul>
@@ -279,7 +303,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/24/kaggle项目leaf-classification/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/27/房地产数据分析/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +317,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/25/使用GitKraKen可视化工具管理git源码/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          使用GitKraKen可视化工具管理git源码
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/19/使用skicit-learn做数据分析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用scikit-learn做数据分析</div>
+    <a href="/2019/07/15/数据结构和算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构和算法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,8 +350,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2018/08/24/kaggle项目leaf-classification/", 
-    sourceId: "kaggle项目leaf-classification",
+    url: "http://yoursite.com/2019/08/27/房地产数据分析/", 
+    sourceId: "房地产数据分析",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -373,7 +388,7 @@
 <script src="//www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2018/08/24/kaggle项目leaf-classification/",
+  id: "http://yoursite.com/2019/08/27/房地产数据分析/",
   owner: 'suimingyang',
   repo: 'suimingyang.github.io',
   oauth: {
